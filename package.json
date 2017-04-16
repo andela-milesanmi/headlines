@@ -1,1 +1,20 @@
-
+{
+  "name": "headlines",
+  "version": "1.0.0",
+  "description": "A simple News Feed Application that displays published articles on a range of news sources and blogs from the NewsAPI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-milesanmi/headlines.git"
+  },
+  "author": "Maranatha A. Ilesanmi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-milesanmi/headlines/issues"
+  },
+  "homepage": "https://github.com/andela-milesanmi/headlines#readme"
+}
