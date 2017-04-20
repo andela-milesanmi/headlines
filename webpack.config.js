@@ -5,18 +5,8 @@ module.exports = {
     filename: './public/bundle.js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: __dirname,
-    alias: {
-      // Main: 'app/components/Main.jsx',
-      // Nav: 'app/components/Header/Nav.jsx',
-      // Home: 'app/components/Pages/Home.jsx',
-      // About: 'app/components/Pages/About.jsx',
-      // Contact: 'app/components/Pages/Contact.jsx',
-      // openWeatherMap: 'app/api/openWeatherMap.jsx',
-      // WeatherForm: 'app/components/Weather/WeatherForm.jsx',
-      // WeatherMessage: 'app/components/Weather/WeatherMessage.jsx',
-    },
+    extensions: ['.js', '.jsx'],
+    alias: {},
   },
   module: {
     loaders: [

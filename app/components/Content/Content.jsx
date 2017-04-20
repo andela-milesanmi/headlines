@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Footer extends React.Component {
   render() {
@@ -19,5 +20,9 @@ class Footer extends React.Component {
     );
   }
 }
+
+Footer.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 module.exports = Footer;

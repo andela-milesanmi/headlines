@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import Nav from './Header/Nav';
 import Footer from './Footer/Footer';
+import SearchBar from './News/SearchBar';
 
 class Main extends Component {
   render() {
@@ -13,6 +15,7 @@ class Main extends Component {
           <Nav />
         </header>
         <main>
+          <SearchBar />
           <h4>Main Content Area</h4>
           {this.props.children}
         </main>
@@ -34,5 +37,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default Main;

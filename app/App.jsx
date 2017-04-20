@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import ReactRouter, { Router, hashHistory, Route, IndexRoute } from 'react-router';
 import Main from './components/Main';
 import Home from './components/Pages/Home';
