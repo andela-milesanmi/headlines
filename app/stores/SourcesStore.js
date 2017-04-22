@@ -5,12 +5,12 @@ import NewsFeedConstants from '../constants/NewsFeedConstants';
 
 const CHANGE_EVENT = 'change';
 
-const NewsStore = assign({}, EventEmitter.prototype, {
-  articles: [],
+const SourcesStore = assign({}, EventEmitter.prototype, {
+  sources: [],
 
   // Accessor method
   getAll() {
-    return this.articles;
+    return this.sources;
   },
 
   // Emit Change event
@@ -29,18 +29,17 @@ const NewsStore = assign({}, EventEmitter.prototype, {
   },
 });
 
-AppDispatcher.register((payload) => {
-  // console.log(payload);
-  console.log('News payload in newsStore', payload);
-  switch (payload.actionType) {
-    case NewsFeedConstants.GET_ARTICLES:
+AppDispatcher.register((payloads) => {
+  console.log('Sources payload in sourcesStore', payloads);
+  switch (payloads.actionType) {
+    case NewsFeedConstants.GET_SOURCES:
       // console.log('1. get sources here');
-      NewsStore.articles = [...payload.content.articles];
-      NewsStore.emitChange();
+      SourcesStore.sources = [...payloads.content];
+      SourcesStore.emitChange();
       break;
     default:
       break;
   }
 });
 
-export default NewsStore;
+export default SourcesStore;

@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Nav from './Header/Nav';
 import Footer from './Footer/Footer';
-import SearchBar from './News/SearchBar';
+import ViewSources from './News/ViewSources';
+import ViewNews from './News/ViewNews';
 
 class Main extends Component {
   render() {
@@ -15,9 +16,10 @@ class Main extends Component {
           <Nav />
         </header>
         <main>
-          <SearchBar />
           <h4>Main Content Area</h4>
           {this.props.children}
+          <ViewSources />
+          <ViewNews />
         </main>
         <aside className="primary-aside">
           <h4>Sidebar Component</h4>
