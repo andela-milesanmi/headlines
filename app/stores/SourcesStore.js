@@ -30,10 +30,8 @@ const SourcesStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register((payloads) => {
-  console.log('Sources payload in sourcesStore', payloads);
   switch (payloads.actionType) {
     case NewsFeedConstants.GET_SOURCES:
-      // console.log('1. get sources here');
       SourcesStore.sources = [...payloads.content];
       SourcesStore.emitChange();
       break;

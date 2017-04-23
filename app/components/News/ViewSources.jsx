@@ -41,18 +41,22 @@ class ViewSources extends React.Component {
     SourcesStore.removeChangeListener(this.onChange);
   }
   updateSearch(event) {
-    // console.log('event', event.value);
-    this.setState({ currentValue: event.value });
-    NewsAction.getArticles(event.value);
+    if (event.value) {
+      console.log('event', event.value);
+      this.setState({ currentValue: event.value });
+      NewsAction.getArticles(event.value);
+    }
   }
   handleQueryValue() {
     const source = this.state.currentValue.value;
-    // console.log(source);
-    NewsAction.getArticles({ source, sortby: 'top' });
+    if (source !== undefined) {
+      NewsAction.getArticles({ source, sortby: 'top' });
+    } else {
+      alert('Please select a news source');
+    }
   }
 
   mapStateToOptions(sources) {
-    // console.log(sources);
     return sources.map(source => ({
       value: source.id,
       label: source.name,

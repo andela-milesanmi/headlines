@@ -1,10 +1,14 @@
 import React from 'react';
+import ViewSources from '../News/ViewSources';
+import ViewNews from '../News/ViewNews';
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div>
-      <h3>Home!</h3>
-      <p>Welcome to the Home page.</p>
+      <div className="row">
+        <ViewSources />
+      </div>
+      <ViewNews />
     </div>
   );
 };

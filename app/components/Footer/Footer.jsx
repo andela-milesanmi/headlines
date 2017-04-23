@@ -1,21 +1,37 @@
 import React from 'react';
+import { Link, IndexLink } from 'react-router';
 
 class Footer extends React.Component {
   render() {
-    const footerStyles = {
-      marginTop: '30px',
-    };
-
     return (
-      <div>
-        <div className="footer" style={footerStyles}>
+      <footer>
+        <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <p>Copyright &copy; Maranatha A. Ilesanmi, 2017</p>
+              <ul className="list-inline">
+                <li>
+                  <IndexLink to="/" activeClassName="active">Home</IndexLink>
+                </li>
+                <li className="footer-menu-divider">&sdot;</li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li className="footer-menu-divider">&sdot;</li>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+                <li className="footer-menu-divider">&sdot;</li>
+                <li>
+                  <a href="/logout">Logout</a>
+                </li>
+              </ul>
+              <p className="copyright text-muted small">
+                Copyright &copy; Maranatha A. Ilesanmi, 2017 | All rights reserved
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     );
   }
 }

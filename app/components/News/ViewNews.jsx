@@ -12,56 +12,53 @@ class ViewNews extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
   getItemsState() {
-    //console.log('NewsStore.getAll()', NewsStore.getAll());
     return {
       allItems: NewsStore.getAll(),
     };
   }
   componentWillMount() {
     NewsAction.getArticles();
-    console.log('NewsAction.getArticles . ', NewsAction.getArticles());
-    // NewsStore.on('change', this.onChange);
+    // console.log('NewsAction.getArticles . ', NewsAction.getArticles());
     NewsStore.addChangeListener(this.onChange);
   }
   onChange() {
-    console.log('this.getItemsState()', this.getItemsState());
+    // console.log('this.getItemsState()', this.getItemsState());
     this.setState(this.getItemsState());
   }
   componentWillUnMount() {
     NewsStore.removeChangeListener(this.onChange);
   }
 
-  renderNews() {
-    const myArticles = this.state.allItems;
-    myArticles.forEach(article => {
-      // console.log('Article.Title', article.title);
-      return <p>Article Title: { article.title }</p>;
-    });
-  }
   render() {
     const myArticles = this.state.allItems;
-    // console.log('this.state.allItems', this.state.allItems);
-    // console.log('NewsList Data . ', myArticles);
-    // const articleContent = this.state.allArticles.map(article => {
-    //   return (
-    //     <li>{ articleContent.author }</li>
-    //   );
-    // });
-   
+
     return (
       <div className="search-box">
         <h3>News Articles</h3>
-        <p>There is a news article here</p>
+        <hr className="section-heading-spacer" />
         {
-          myArticles.map(function(object) {
+          myArticles.map((object) => {
+            const articleDivStyle = {
+              maxHeight: '400px',
+              border: '1px solid #000000',
+              padding: '5px',
+              margin: '5px',
+            };
+            const newsImageStyle = {
+              height: '100px',
+              background: `url(${object.urlToImage}) center center`,
+              width: '100%',
+              backgroundSize: 'cover',
+            };
             return (
-              <div>
-                <a href={object.url} >
-                  <h4>{ object.title }</h4>
-                  <pre>Date: { object.publishedAt }</pre>
-                  <p>{ object.description }</p>
-                  <img alt={object.title} src={object.urlToImage} height="200" />
+              <div key={object.url} className="col-xs-6 col-lg-3" style={articleDivStyle}>
+                <a href={object.url}>
+                  <h4 className="section-heading">{ object.title }</h4>
                 </a>
+                <pre>Date: { object.publishedAt }</pre>
+                <div style={newsImageStyle} />
+                <p className="">{ object.description }</p>
+                <a className="btn btn-info" href={object.url} role="button">Read more »</a>
               </div>
             );
           })
