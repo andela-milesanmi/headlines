@@ -1,14 +1,14 @@
 import React from 'react';
 import Select from 'react-select';
-import SourcesStore from '../../stores/SourcesStore';
+import SortBysStore from '../../stores/SourcesStore';
 import NewsAction from '../../actions/NewsAction';
 
 
-class ViewSources extends React.Component {
+class ViewSortBys extends React.Component {
   constructor() {
     super();
     this.state = {
-      sources: [],
+      sortBys: [],
       currentValue: '',
     };
     this.getItemsState = this.getItemsState.bind(this);
@@ -20,7 +20,7 @@ class ViewSources extends React.Component {
   // Method to retrieve state from Stores
   getItemsState() {
     return {
-      sources: SourcesStore.getAll(),
+      sortBys: SortBysStore.getAll(),
     };
   }
   // Get initial state from stores
@@ -30,7 +30,7 @@ class ViewSources extends React.Component {
   onChange() {
     const itemState = this.getItemsState();
     this.setState({
-      sources: itemState.sources || [],
+      sortBys: itemState.sortBys || [],
     });
   }
   componentWillMount() {

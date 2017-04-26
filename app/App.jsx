@@ -1,25 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import PropTypes from 'prop-types';
 import { Router, hashHistory, Route, IndexRoute } from 'react-router';
-// import 'bootstrap/scss/bootstrap.scss';
 import Main from './components/Main';
 import Home from './components/Pages/Home';
-import About from './components/Pages/About';
-import Contact from './components/Pages/Contact';
+// import About from './components/Pages/About';
+import ViewNews from './components/News/ViewNews';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import user from './components/userModel';
+
+function requireAuth(nextState, replace) {
+  if (!user.isLogin) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+}
+
+function checkAuth(nextState, replace) {
+  if (user.isLogin) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+}
 
 const app = document.getElementById('app');
 
 ReactDOM.render(
   <div>
     <Router history={hashHistory}>
-      <Route path="/" component={Main}>
+      <Route path="/" component={Main} onEnter={requireAuth}>
         <IndexRoute component={Home} />
-        {/*<Route path="/articles/:id&:sort" component={ ViewNews } />*/}
-        <Route path="about" component={About} />
-        <Route path="contact" component={Contact} />
+        <Route path="/news/:source/:sortby" component={ViewNews} />
       </Route>
+      <Route path="login" component={Login} />
+      <Route path="logout" component={Logout} />
     </Router>
   </div>,
-  app
+  app,
 );

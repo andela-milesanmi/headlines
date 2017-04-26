@@ -1,12 +1,15 @@
 import React from 'react';
+import Select from 'react-select';
 import NewsStore from '../../stores/NewsStore';
+import SortBysStore from '../../stores/SortBysStore';
 import NewsAction from '../../actions/NewsAction';
 
 class ViewNews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allItems: NewsStore.getAll(),
+      allItems: [],
+      sortBys: "",
     };
     this.getItemsState = this.getItemsState.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -14,12 +17,14 @@ class ViewNews extends React.Component {
   getItemsState() {
     return {
       allItems: NewsStore.getAll(),
+      sortBys: SortBysStore.getAll(),
     };
   }
   componentWillMount() {
-    NewsAction.getArticles();
+    // NewsAction.getArticles();
     // console.log('NewsAction.getArticles . ', NewsAction.getArticles());
     NewsStore.addChangeListener(this.onChange);
+    // SortBysStore.addChangeListener(this.onChange);
   }
   onChange() {
     // console.log('this.getItemsState()', this.getItemsState());
@@ -27,38 +32,53 @@ class ViewNews extends React.Component {
   }
   componentWillUnMount() {
     NewsStore.removeChangeListener(this.onChange);
+    SortBysStore.removeChangeListener(this.onChange);
   }
 
   render() {
+    let sortsLists = '<option>Select A filter Option</option>';
+    if (this.state.sortBys !== '') {
+      const sortBysSplit = this.state.sortBys.split('=')[1];
+      const mySortBys = sortBysSplit.split(',');
+      sortsLists = mySortBys.map(function (sortsList) {
+        return <option value={sortsList}>{sortsList}</option>;
+        // console.log('SortedSortBys', sortsList);
+      });
+      return mySortBys.map(mySortBy => ({
+        value: `${mySortBy}`,
+        label: mySortBy,
+      }));
+    }
+    // console.log('sortsLists', sortsLists);
     const myArticles = this.state.allItems;
+    console.log('this.props.location', this.props.location);
+    // const mySortBy = mySortBys.split(',');
+    // let sortByReq = req.split('?')[1];
+    // console.log('myArticles', myArticles);
+    // console.log('this.state', this.state);
 
     return (
       <div className="search-box">
+        <select>{sortsLists}</select>
         <h3>News Articles</h3>
-        <hr className="section-heading-spacer" />
         {
           myArticles.map((object) => {
-            const articleDivStyle = {
-              maxHeight: '400px',
-              border: '1px solid #000000',
-              padding: '5px',
-              margin: '5px',
-            };
-            const newsImageStyle = {
-              height: '100px',
-              background: `url(${object.urlToImage}) center center`,
-              width: '100%',
-              backgroundSize: 'cover',
-            };
             return (
-              <div key={object.url} className="col-xs-6 col-lg-3" style={articleDivStyle}>
-                <a href={object.url}>
-                  <h4 className="section-heading">{ object.title }</h4>
-                </a>
-                <pre>Date: { object.publishedAt }</pre>
-                <div style={newsImageStyle} />
-                <p className="">{ object.description }</p>
-                <a className="btn btn-info" href={object.url} role="button">Read more »</a>
+              <div>
+                <div className="col s10 m4">
+                  <div className="card large">
+                    <div className="card-image">
+                      <img alt={object.name} src={object.urlToImage} />
+                    </div>
+                    <div className="card-content">
+                      <h6><a href={object.url}>{object.title}</a></h6>
+                      <p>{object.description}</p>
+                    </div>
+                    <div className="card-action">
+                      <a className="btn waves-effect waves-light blue" href={object.url} role="button">Read more »</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })

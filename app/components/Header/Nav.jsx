@@ -4,31 +4,38 @@ import { Link, IndexLink } from 'react-router';
 class Nav extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div className="container topnav">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-            <h2><IndexLink to="/">Mai NewsFeeds</IndexLink></h2>
-          </div>
+      <nav className="blue" role="navigation">
+        <div className="nav-wrapper container">
+          {/* <a classID="logo-container" href="/" className="brand-logo">Logo</a>*/}
+          <IndexLink to="/" classID="logo-container" className="brand-logo">
+            Mai Headlines
+          </IndexLink>
+          <ul className="right hide-on-med-and-down">
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+          </ul>
 
-          <div className="collapse navbar-collapse" classID="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
-              <li>
-                <a href="/logout">Logout</a>
-              </li>
-            </ul>
-          </div>
+          <ul classID="nav-mobile" className="side-nav">
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+          </ul>
+          <a href="/#" data-activates="nav-mobile" className="button-collapse">
+            <i className="material-icons">Menu</i>
+          </a>
         </div>
       </nav>
     );
