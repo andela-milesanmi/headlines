@@ -9,16 +9,16 @@ import Footer from './Footer/Footer';
 class Main extends Component {
   render() {
     return (
-      <div class="container col 12 m10 center">
+      <div>
         <Nav />
-        <div class="container">
-          <div class="section">
+        <div className="container">
+          <div className="section">
             <div className="row">
               {this.props.children}
             </div>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -30,8 +30,10 @@ const SortBysStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register((payload) => {
+  console.log('payload.sortBysAvailable', payload.content);
   switch (payload.actionType) {
     case NewsFeedConstants.GET_SORTBYS:
+    // console.log('payload.content.sortBysAvailable', payload.content);
       SortBysStore.sortBys = payload.content;
       SortBysStore.emitChange();
       break;
