@@ -2,4 +2,6 @@ language: node_js
 node_js:
   - "6"
 
-# after_success: npm run coverage
+test: "npm test --coverage NODE_ENV=test mocha --compilers js:babel-core/register ../headlines/app/test/components/*.jsx"
+
+after_success: "cat ./coverage/lcov.info | coveralls"

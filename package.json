@@ -4,10 +4,8 @@
   "description": "A simple News Feed Application that displays published articles on a range of news sources and blogs from the NewsAPI.",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register ../headlines/app/test/components/*.jsx",
-    "start": "node server.js",
-    "test-coveralls": "nyc --extension .jsx --extension .es6 npm test --reporter=html --reporter=text mocha --compilers js:babel-core/register ../headlines/app/test/components/*.jsx",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register ../headlines/app/test/components/*.jsx --coverage",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
