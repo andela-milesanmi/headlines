@@ -12,23 +12,11 @@ class Nav extends React.Component {
           </IndexLink>
           <ul className="right hide-on-med-and-down">
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
               <Link to="/logout">Logout</Link>
             </li>
           </ul>
 
           <ul classID="nav-mobile" className="side-nav">
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
             <li>
               <Link to="/logout">Logout</Link>
             </li>

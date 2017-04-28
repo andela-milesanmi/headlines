@@ -34,7 +34,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={Main} onEnter={requireAuth}>
         <IndexRoute component={Home} />
-        <Route path="/news/:source/:sortby" component={ViewNews} />
+        <Route path="/news/:source" component={ViewNews} />
       </Route>
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />
