@@ -9,7 +9,7 @@ describe('Test Footer component', () => {
   //   label: 'top',
   // };
   const wrapper = shallow(<Footer />);
-  console.log(wrapper);
+  // console.log(wrapper);
   describe('should have an html element called ', () => {
     it('footer', () => {
       expect(wrapper.node.type).toBe('footer');
