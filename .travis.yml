@@ -2,12 +2,15 @@ language: node_js
 node_js:
   - "6"
 
-
 after_success:
   - npm run coverage
   - npm run coveralls
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < lcov.info
+
 addons:
-  postgresql: "9.3"
+  code_climate:
+    repo_token: 2c6b5b8dfab364bb9027baa2121d55965c226677cf5c650daa9604bb419fb184
 
 after_failure:
   - npm run coverage
