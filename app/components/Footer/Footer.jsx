@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="page-footer blue">
+      <footer className="page-footer black">
         <div className="footer-copyright">
           <div className="container">
             <p className="copyright text-muted small">

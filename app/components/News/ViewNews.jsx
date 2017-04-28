@@ -84,7 +84,7 @@ class ViewNews extends React.Component {
               return (
                 <div key={object.url}>
                   <div className="col s10 m4">
-                    <div className="card medium">
+                    <div className="card medium blue-grey">
                       <div className="card-image">
                         <img alt={object.name} src={object.urlToImage} />
                       </div>
