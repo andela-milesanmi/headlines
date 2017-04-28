@@ -14,7 +14,7 @@ class ViewSources extends React.Component {
     // this.onChange = this.onChange.bind(this);
     this.mapStateToOptions = this.mapStateToOptions.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    this.handleQueryValue = this.handleQueryValue.bind(this);
+    // this.handleQueryValue = this.handleQueryValue.bind(this);
     // this.saveSortToLocalStorage = this.saveSortToLocalStorage.bind(this);
   }
   // // Method to retrieve state from Stores
@@ -55,14 +55,14 @@ class ViewSources extends React.Component {
       // console.log(source.sortBysAvailable);
     }
   }
-  handleQueryValue() {
-    const source = this.state.currentValue.value;
-    if (source !== undefined) {
-      NewsAction.getArticles({ source, sortby: 'top' });
-    } else {
-      alert('Please select a news source');
-    }
-  }
+  // handleQueryValue() {
+  //   const source = this.state.currentValue.value;
+  //   if (source !== undefined) {
+  //     NewsAction.getArticles({ source, sortby: 'top' });
+  //   } else {
+  //     alert('Please select a news source');
+  //   }
+  // }
 
   mapStateToOptions(sources) {
     return sources.map(source => ({
