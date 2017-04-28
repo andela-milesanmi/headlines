@@ -2,6 +2,13 @@ language: node_js
 node_js:
   - "6"
 
-test: "npm test --coverage NODE_ENV=test mocha --compilers js:babel-core/register ../headlines/app/test/components/*.jsx"
 
-after_success: "cat ./coverage/lcov.info | coveralls"
+after_success:
+  - npm run coverage
+  - npm run coveralls
+addons:
+  postgresql: "9.3"
+
+after_failure:
+  - npm run coverage
+  - npm run coveralls
