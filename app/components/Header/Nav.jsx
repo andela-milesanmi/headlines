@@ -5,7 +5,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div className="navbar-fixed">
-        <nav className="black" role="navigation">
+        <nav className="teal" role="navigation">
           <div className="nav-wrapper container">
             {/* <a classID="logo-container" href="/" className="brand-logo">Logo</a>*/}
             <IndexLink to="/" classID="logo-container" className="brand-logo">
