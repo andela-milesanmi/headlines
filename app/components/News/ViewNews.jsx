@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router';
+import Share from '../../share/Share';
 import NewsStore from '../../stores/NewsStore';
 // import SortBysStore from '../../stores/SortBysStore';
 import NewsAction from '../../actions/newsAction';
@@ -67,12 +68,13 @@ class ViewNews extends React.Component {
 
   render() {
     const myArticles = this.state.allItems;
+
     return (
       <div className="container">
         <div className="section">
           <div className="container">
             <div className="row center">
-              <div className="search-box col s12 m6 light">
+              <div className="col m3 light">
                 Sort by: <Select
                   name="sort-by"
                   options={this.getOptions(this.props.sortBy)}
@@ -80,16 +82,6 @@ class ViewNews extends React.Component {
                   className="search-bar"
                   onChange={this.updateSearch}
                   placeholder="Sort News By"
-                />
-              </div>
-              <div className="search-box col s12 m6 light">
-                Select Language: <Select
-                  name="sort-by"
-                  options=""
-                  value=""
-                  className="search-bar"
-                  onChange=""
-                  placeholder="Language"
                 />
               </div>
             </div>
@@ -109,7 +101,10 @@ class ViewNews extends React.Component {
                           <h6><Link to={object.url}>{object.title}</Link></h6>
                           <p className="col s12">Date: {object.publishedAt.split('T')[0]}</p>
                           <p className="col s12">Time: {object.publishedAt.split('T')[1].split('Z')[0]}</p>
-                          <p className="col s12 light">{object.description}</p>
+                          <p className="col s12 light">
+                            {object.description}
+                            <Share share={object.url} title={object.title} />
+                          </p>
                         </div>
                         <div className="card-action">
                           <a className="btn waves-effect waves-light teal" target="_blank" rel="noopener noreferrer" href={object.url} role="button">Read more »</a>
