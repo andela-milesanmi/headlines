@@ -7,13 +7,7 @@ class Main extends Component {
     return (
       <div>
         <Nav />
-        <div className="container">
-          <div className="section">
-            <div className="row">
-              {this.props.children}
-            </div>
-          </div>
-        </div>
+        {this.props.children}
         <Footer />
       </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import SourcesStore from '../../stores/SourcesStore';
 import ViewSources from '../News/ViewSources';
 import ViewNews from '../News/ViewNews';
-import NewsAction from '../../actions/NewsAction';
+import NewsAction from '../../actions/newsAction';
 
 class Home extends React.Component {
   constructor(props) {
