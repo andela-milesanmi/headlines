@@ -57,7 +57,7 @@ class Share extends React.Component {
               </LinkedinShareButton>
             </li>
             <li>
-              <WhatsappShareButton url={shareUrl} title={title}>
+              <WhatsappShareButton url={shareUrl} title={title} seperator=" ">
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             </li>
