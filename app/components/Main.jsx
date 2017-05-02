@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from './Header/Nav';
 import Footer from './Footer/Footer';
 
-class Main extends Component {
+class Main extends React.Component {
   render() {
     return (
       <div>

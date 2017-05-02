@@ -2,7 +2,10 @@ import React from 'react';
 import Select from 'react-select';
 import NewsAction from '../../actions/newsAction';
 
-
+/**
+ * Class to hold the View Sources component.
+ * @extends React.Component
+ */
 class ViewSources extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +16,10 @@ class ViewSources extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
   }
 
+  /**
+   * Method to set the currently selected news source and send request to the News Actions.
+   * @param {*} event
+   */
   updateSearch(event) {
     const value = event.value;
     if (value) {
@@ -26,6 +33,10 @@ class ViewSources extends React.Component {
     }
   }
 
+  /**
+   * Method to generate the options for the Search box.
+   * @param {object} sources
+   */
   mapStateToOptions(sources) {
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
@@ -33,7 +44,9 @@ class ViewSources extends React.Component {
     }));
   }
 
-
+  /**
+   * Render method to display the News Component
+   */
   render() {
     return (
       <div className="">

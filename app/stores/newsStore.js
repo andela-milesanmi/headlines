@@ -40,7 +40,6 @@ const NewsStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register((payload) => {
   switch (payload.actionType) {
     case NewsFeedConstants.GET_ARTICLES:
-      // console.log('payload.content.sortBy', payload.content.source);
       NewsStore.articles = [...payload.content.articles];
       NewsStore.articlesSource = payload.content.source;
       NewsStore.articlesSortBy = payload.content.sortBy;

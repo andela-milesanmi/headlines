@@ -16,10 +16,6 @@ const LinkedinIcon = generateShareIcon('linkedin');
 const WhatsappIcon = generateShareIcon('whatsapp');
 
 class Share extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const shareUrl = this.props.share;
     const title = this.props.title;
@@ -67,5 +63,10 @@ class Share extends React.Component {
     );
   }
 }
+
+Share.propTypes = {
+  share: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+};
 
 export default Share;

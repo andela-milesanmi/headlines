@@ -5,6 +5,10 @@ import Share from '../../share/Share';
 import NewsStore from '../../stores/newsStore';
 import NewsAction from '../../actions/newsAction';
 
+/**
+ * Class to hold the View News component.
+ * @extends React.Component
+ */
 class ViewNews extends React.Component {
   constructor(props) {
     super(props);
@@ -22,15 +26,18 @@ class ViewNews extends React.Component {
     this.getNewSortByValue = this.getNewSortByValue.bind(this);
   }
 
+  /**
+   * Method to query the News Action based on the Search box change
+   */
   componentWillMount() {
     NewsStore.addChangeListener(this.onChange);
   }
 
+  /**
+   * Function to set the state of the component.
+   */
   onChange() {
     this.setState(this.getItemsState());
-    console.log('current sort value', this.state.currentSortValue);
-    console.log('props.sortBy', this.props);
-    console.log('currentSource', this.state.currentSource);
   }
 
   getItemsState() {
@@ -48,18 +55,24 @@ class ViewNews extends React.Component {
     }));
   }
 
+  /**
+   * Method to set the current Sort value and send request to the News Actions.
+   * @param {*} event
+   */
   updateSearch(event) {
     const value = event.value;
     this.setState({ currentSortValue: value });
     const urlString = `${this.state.currentSource}&sortBy=${value}`;
     NewsAction.getArticles(urlString, value);
-    console.log('urlString', urlString);
   }
 
   componentWillUnMount() {
     NewsStore.removeChangeListener(this.onChange);
   }
 
+  /**
+   * Render method to display the News Component
+   */
   render() {
     const myArticles = this.state.allItems;
 
@@ -111,5 +124,9 @@ class ViewNews extends React.Component {
     );
   }
 }
+
+ViewNews.propTypes = {
+  sortBy: React.PropTypes.array.isRequired,
+};
 
 export default ViewNews;

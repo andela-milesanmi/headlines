@@ -4,6 +4,10 @@ import ViewSources from '../News/ViewSources';
 import ViewNews from '../News/ViewNews';
 import NewsAction from '../../actions/newsAction';
 
+/**
+ * Class to hold the main component.
+ * @extends React.Component
+ */
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -16,15 +20,24 @@ class Home extends React.Component {
     this.setSortBy = this.setSortBy.bind(this);
   }
 
-  // Get initial state from stores
+  /**
+   * Get the initial state from stores
+   */
   getInitialState() {
     return this.getItemsState();
   }
 
+  /**
+   * Method to query the News Action based on the Search box change
+   */
   componentWillMount() {
     SourcesStore.addChangeListener(this.onChange);
     NewsAction.getSources();
   }
+
+  /**
+   * Function to set the state of the component.
+   */
   onChange() {
     const itemState = this.getItemsState();
     this.setState({
@@ -32,20 +45,29 @@ class Home extends React.Component {
     });
   }
 
-  // Method to retrieve state from Stores
+  /**
+   * Method to retrieve the sources from the Store
+   */
   getItemsState() {
     return ({
       sources: SourcesStore.getAll(),
     });
   }
+
+  /**
+   * Method to set the currently selected SortBy status
+   * @param {} sortBy
+   */
   setSortBy(sortBy) {
     this.setState({
       sortBy,
     });
   }
 
+  /**
+   * Method to display the main (parent) component.
+   */
   render() {
-    // console.log('state sources', this.state.sources);
     return (
       <div className="main-component">
         <div className="row">
