@@ -13,13 +13,13 @@ class ViewSources extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
   }
 
-  componentWillUnMount() {
-    // SourcesStore.removeChangeListener(this.onChange);
-  }
   updateSearch(event) {
     const value = event.value;
     if (value) {
-      this.setState({ currentValue: value });
+      this.setState({
+        currentValue: value,
+        newsSource: `Viewing news from ${event.label}`,
+      });
       NewsAction.getArticles(value);
       const sortBy = value.split('?sortBy=')[1].split(',');
       this.props.setSortBy(sortBy);
@@ -30,26 +30,23 @@ class ViewSources extends React.Component {
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
       label: source.name,
-      // desc: source.description,
-      // category: source.category,
-      // sortBy: source.sortBysAvailable,
     }));
   }
 
 
   render() {
-    // console.log('currently selected item is: ', this.state.currentValue);
     return (
-      <div className="parallax-container grey">
+      <div className="">
         <div className="section no-pad-bot">
           <div className="container">
-            <h4 className="header center teal-text text-lighten-4">Your home of live news</h4>
+            <h4 className="header center teal-text">Your home of live news</h4>
             <div className="row center">
-              <h5 className="header col s12 light">Search through our current set of about 70 news sources!!!</h5>
+              <h5 className="header col s12 light">
+                Search through our current set of about 70 news sources!!!
+              </h5>
             </div>
             <div className="row center valign-wrapper">
-              <div className="search-box col s12 light">
-                Select News Source:
+              <div className="search-box col s12 m6 offset-m3">
                 <Select
                   name="form-field-name"
                   options={this.mapStateToOptions(this.props.sources)}
@@ -60,10 +57,8 @@ class ViewSources extends React.Component {
                 />
               </div>
             </div>
+            <p className="center">{this.state.newsSource}</p>
           </div>
-        </div>
-        <div className="parallax">
-          <img src="../banner-bg.jpg" alt="Mai Headlines Parallax Background" style={{ display: 'block', transform: 'translate3d(-50%, 175px, 0px)' }} />
         </div>
       </div>
     );

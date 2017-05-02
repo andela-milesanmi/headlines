@@ -1,5 +1,5 @@
 import axios from 'axios';
-import NewsFeedActions from '../actions/NewsAction';
+import NewsFeedActions from '../actions/newsAction';
 
 module.exports = {
   getSources() {

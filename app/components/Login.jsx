@@ -47,9 +47,6 @@ class Login extends React.Component {
               </div>
             </div>
           </div>
-          <div className="parallax">
-            <img src="../../public/img/intro-bg.jpg" alt="Mai Headlines Parallax Background" style={{ display: 'block', transform: 'translate3d(-50%, 175px, 0px)' }} />
-          </div>
         </div>
       </div>
     );
