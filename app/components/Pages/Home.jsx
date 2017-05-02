@@ -47,7 +47,7 @@ class Home extends React.Component {
   render() {
     // console.log('state sources', this.state.sources);
     return (
-      <div>
+      <div className="main-component">
         <div className="row">
           <ViewSources sources={this.state.sources} setSortBy={this.setSortBy} />
         </div>
