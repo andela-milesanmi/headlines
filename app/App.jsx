@@ -18,15 +18,6 @@ function requireAuth(nextState, replace) {
   }
 }
 
-function checkAuth(nextState, replace) {
-  if (user.isLogin) {
-    replace({
-      pathname: '/',
-      state: { nextPathname: nextState.location.pathname },
-    });
-  }
-}
-
 const app = document.getElementById('app');
 
 ReactDOM.render(

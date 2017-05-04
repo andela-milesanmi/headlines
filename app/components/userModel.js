@@ -11,13 +11,18 @@ class User {
     this.assignUserValues();
   }
 
-  static login(response) {
+  login(response) {
     const user = response.w3;
     Cookies.set('mai', {
       name: user.ig,
       email: user.U3,
       imageUrl: user.Paa,
     });
+    this.userDetails = {
+      name: user.ig,
+      email: user.U3,
+      imageUrl: user.Paa,
+    };
   }
 
   isLoggedIn() {
