@@ -6,6 +6,9 @@ import NewsFeedConstants from '../constants/NewsFeedConstants';
 const CHANGE_EVENT = 'change';
 
 const NewsStore = assign({}, EventEmitter.prototype, {
+  /**
+   * Instantiate the needed parameters
+   */
   articles: [],
   articlesSource: '',
   articlesSortBy: '',
@@ -37,6 +40,9 @@ const NewsStore = assign({}, EventEmitter.prototype, {
   },
 });
 
+/**
+ * Method to register with dispatcher
+*/
 AppDispatcher.register((payload) => {
   switch (payload.actionType) {
     case NewsFeedConstants.GET_ARTICLES:

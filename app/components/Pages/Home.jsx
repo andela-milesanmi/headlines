@@ -9,6 +9,10 @@ import NewsAction from '../../actions/newsAction';
  * @extends React.Component
  */
 class Home extends React.Component {
+  /**
+   * Set the Initial conditions for Home component
+   * @param {object} props - The properties of the Home Class
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +32,8 @@ class Home extends React.Component {
   }
 
   /**
-   * Method to query the News Action based on the Search box change
+   * Invoked immediately after a component is mounted
+   * @return {void} returns nothing
    */
   componentWillMount() {
     SourcesStore.addChangeListener(this.onChange);
@@ -36,7 +41,8 @@ class Home extends React.Component {
   }
 
   /**
-   * Function to set the state of the component.
+   * The method to set the state of the component when there is a change
+   * @return {void} returns nothing
    */
   onChange() {
     const itemState = this.getItemsState();
@@ -46,9 +52,11 @@ class Home extends React.Component {
   }
 
   /**
-   * Method to retrieve the sources from the Store
+   * The method that for handling change
+   * @return {object} sets the state based on value
    */
   getItemsState() {
+    this.getItemsStateNow = '';
     return ({
       sources: SourcesStore.getAll(),
     });
@@ -56,7 +64,7 @@ class Home extends React.Component {
 
   /**
    * Method to set the currently selected SortBy status
-   * @param {} sortBy
+   * @param {string} sortBy
    */
   setSortBy(sortBy) {
     this.setState({
@@ -66,6 +74,7 @@ class Home extends React.Component {
 
   /**
    * Method to display the main (parent) component.
+   * @return {jsx} The News Content
    */
   render() {
     return (
@@ -79,4 +88,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+export default Home;

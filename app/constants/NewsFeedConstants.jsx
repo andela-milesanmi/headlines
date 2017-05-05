@@ -1,6 +1,8 @@
 import keyMirror from 'key-mirror';
 
-// Define action constants
+/**
+ * Define action constants
+*/
 const actionTypes = keyMirror({
   GET_ARTICLES: null,   // Get the News Articles
   GET_SOURCES: null,    // Get the News Sources

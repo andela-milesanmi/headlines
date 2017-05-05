@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import Share from '../../share/Share';
 import NewsStore from '../../stores/newsStore';
@@ -10,6 +11,10 @@ import NewsAction from '../../actions/newsAction';
  * @extends React.Component
  */
 class ViewNews extends React.Component {
+  /**
+   * Set the Initial conditions for showing the News
+   * @param {object} props - The properties of the News Class
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -27,20 +32,27 @@ class ViewNews extends React.Component {
   }
 
   /**
-   * Method to query the News Action based on the Search box change
+   * Invoked immediately after a component is mounted
+   * @return {void} returns nothing
    */
   componentWillMount() {
     NewsStore.addChangeListener(this.onChange);
   }
 
   /**
-   * Function to set the state of the component.
+   * The method to set the state of the component when there is a change
+   * @return {void} returns nothing
    */
   onChange() {
     this.setState(this.getItemsState());
   }
 
+  /**
+   * The method that for handling change
+   * @return {object} sets the state based on value
+   */
   getItemsState() {
+    this.getItemsStateNow = '';
     return ({
       currentSource: NewsStore.getSourceValue(),
       allItems: NewsStore.getAll(),
@@ -48,8 +60,14 @@ class ViewNews extends React.Component {
     });
   }
 
-  getOptions(arr) {
-    return arr.map(val => ({
+  /**
+   * The method that for handling change
+   * @param {array} value - the selected value from select field
+   * @return {*} updates the select box options
+   */
+  getOptions(array) {
+    this.arrayMap = array;
+    return array.map(val => ({
       value: val,
       label: val,
     }));
@@ -58,6 +76,7 @@ class ViewNews extends React.Component {
   /**
    * Method to set the current Sort value and send request to the News Actions.
    * @param {*} event
+   * @return {void} returns nothing
    */
   updateSearch(event) {
     const value = event.value;
@@ -66,12 +85,17 @@ class ViewNews extends React.Component {
     NewsAction.getArticles(urlString, value);
   }
 
+   /**
+   * Invoked immediately when a component is unmounted
+   * @return {void} returns nothing
+   */
   componentWillUnMount() {
     NewsStore.removeChangeListener(this.onChange);
   }
 
   /**
-   * Render method to display the News Component
+   * Display the News Component
+   * @return {jsx} The News Content
    */
   render() {
     const myArticles = this.state.allItems;
@@ -110,7 +134,13 @@ class ViewNews extends React.Component {
                           </div>
                         </div>
                         <div className="card-action">
-                          <a className="btn waves-effect waves-light teal" target="_blank" rel="noopener noreferrer" href={object.url} role="button">Read more »</a>
+                          <a
+                            className="btn waves-effect waves-light teal"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={object.url}
+                            role="button"
+                          >Read more »</a>
                         </div>
                       </div>
                     </div>
@@ -125,8 +155,11 @@ class ViewNews extends React.Component {
   }
 }
 
+/**
+ * Set the PropTypes for News
+ */
 ViewNews.propTypes = {
-  sortBy: React.PropTypes.array.isRequired,
+  sortBy: PropTypes.array.isRequired,
 };
 
 export default ViewNews;

@@ -1,12 +1,17 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import NewsAction from '../../actions/newsAction';
 
 /**
- * Class to hold the View Sources component.
+ * Class  displaying the Search Form.
  * @extends React.Component
  */
 class ViewSources extends React.Component {
+  /**
+   * Returns the value in the Search Field
+   * @param {object} props - The properties of the News Sources Class
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +22,8 @@ class ViewSources extends React.Component {
   }
 
   /**
-   * Method to set the currently selected news source and send request to the News Actions.
+   * Method to set the currently selected news source,
+   * Method to send request to the News Actions.
    * @param {*} event
    */
   updateSearch(event) {
@@ -38,6 +44,7 @@ class ViewSources extends React.Component {
    * @param {object} sources
    */
   mapStateToOptions(sources) {
+    this.sourcesMap = sources;
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
       label: source.name,
@@ -45,7 +52,8 @@ class ViewSources extends React.Component {
   }
 
   /**
-   * Render method to display the News Component
+   * Renders the Search Input
+   * @return {string} Search Form
    */
   render() {
     return (
@@ -78,9 +86,12 @@ class ViewSources extends React.Component {
   }
 }
 
+/**
+ * Set the PropTypes for Search Form
+ */
 ViewSources.propTypes = {
-  sources: React.PropTypes.array.isRequired,
-  setSortBy: React.PropTypes.func.isRequired,
+  sources: PropTypes.array.isRequired,
+  setSortBy: PropTypes.func.isRequired,
 };
 
 export default ViewSources;

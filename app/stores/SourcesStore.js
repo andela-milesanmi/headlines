@@ -6,6 +6,9 @@ import NewsFeedConstants from '../constants/NewsFeedConstants';
 const CHANGE_EVENT = 'change';
 
 const SourcesStore = assign({}, EventEmitter.prototype, {
+  /**
+   * Instantiate the needed parameter
+   */
   sources: [],
 
   // Accessor method
@@ -29,8 +32,10 @@ const SourcesStore = assign({}, EventEmitter.prototype, {
   },
 });
 
+/**
+ * Method to register with dispatcher
+*/
 AppDispatcher.register((payloads) => {
-  console.log('payloads');
   switch (payloads.actionType) {
     case NewsFeedConstants.GET_SOURCES:
       SourcesStore.sources = [...payloads.content];

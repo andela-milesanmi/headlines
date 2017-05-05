@@ -1,17 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Nav from './Header/Nav';
 import Footer from './Footer/Footer';
 
-class Main extends React.Component {
-  render() {
-    return (
-      <div>
-        <Nav />
-        {this.props.children}
-        <Footer />
-      </div>
-    );
-  }
-}
+const Main = props => (
+  <div>
+    <Nav />
+    {props.children}
+    <Footer />
+  </div>
+);
+
+/**
+ * Set the PropTypes for Main
+ */
+Main.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default Main;

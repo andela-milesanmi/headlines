@@ -3,23 +3,40 @@ import GoogleLogin from 'react-google-login';
 import createHistory from 'history/createBrowserHistory';
 import user from './userModel';
 
+/**
+ * Returns the Success Message.
+ * @param {object} response - Returns the User Profile
+ * @return {object} the error message
+ */
 const history = createHistory({
   forceRefresh: true,
 });
 
+/**
+ * Class displaying Login Page
+ * @extends React.Component
+ */
 class Login extends React.Component {
+  /**
+   * Invoked immediately after a component is mounted
+   * @return {void} returns nothing
+   */
   componentWillMount() {
     if (user.isLogin) {
       history.push('/');
     }
   }
 
+  /**
+   * Show the Login Component
+   * @return {jsx} Show the login component
+   */
   render() {
+    const clientId = '618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com';
     const responseGoogle = (response) => {
       user.login(response);
-      window.location.reload();
+      global.window.location.reload();
     };
-
     return (
       <div>
         <nav className="teal">
@@ -34,11 +51,13 @@ class Login extends React.Component {
               <h1 className="header center teal-text text-lighten-2">Mai Headlines</h1>
               <h4 className="header center teal-text text-lighten-2">Your home of live news</h4>
               <div className="row center">
-                <h5 className="header col s12 light">Search through our current set of about 70 sources!!!</h5>
+                <h5 className="header col s12 light">
+                  Search through our current set of about 70 sources!!!
+                </h5>
               </div>
               <div className="row center">
                 <GoogleLogin
-                  clientId="618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com"
+                  clientId={clientId}
                   buttonText="Login With Google"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
@@ -52,4 +71,5 @@ class Login extends React.Component {
     );
   }
 }
+
 export default Login;
