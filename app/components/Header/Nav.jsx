@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
+/**
+ * @return {*} return the Nav component
+*/
 const Nav = () => (
   <div className="navbar-fixed">
     <nav className="teal" role="navigation">

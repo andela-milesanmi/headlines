@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants.jsx';
+import ActionTypes from '../constants/ActionTypes.jsx';
 
 const CHANGE_EVENT = 'change';
 
@@ -37,7 +37,7 @@ const SourcesStore = assign({}, EventEmitter.prototype, {
 */
 AppDispatcher.register((payloads) => {
   switch (payloads.actionType) {
-    case NewsFeedConstants.GET_SOURCES:
+    case ActionTypes.GET_SOURCES:
       SourcesStore.sources = [...payloads.content];
       SourcesStore.emitChange();
       break;

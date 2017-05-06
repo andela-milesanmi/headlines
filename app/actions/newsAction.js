@@ -1,6 +1,6 @@
 import axios from 'axios';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants.jsx';
+import ActionTypes from '../constants/ActionTypes.jsx';
 
 const baseUrl = 'https://newsapi.org/v1/';
 
@@ -12,7 +12,7 @@ const NewsAction = {
         throw new Error(res.data.message);
       } else {
         AppDispatcher.dispatch({
-          actionType: NewsFeedConstants.GET_SOURCES,
+          actionType: ActionTypes.GET_SOURCES,
           content: res.data.sources,
         });
       }
@@ -39,11 +39,11 @@ const NewsAction = {
           throw new Error(res.data.message);
         } else {
           AppDispatcher.dispatch({
-            actionType: NewsFeedConstants.GET_ARTICLES,
+            actionType: ActionTypes.GET_ARTICLES,
             content: res.data,
           });
           AppDispatcher.dispatch({
-            actionType: NewsFeedConstants.GET_SORTBYS,
+            actionType: ActionTypes.GET_SORTBYS,
             content: sortByReq,
           });
         }

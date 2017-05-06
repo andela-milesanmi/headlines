@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants.jsx';
+import ActionTypes from '../constants/ActionTypes.jsx';
 
 const CHANGE_EVENT = 'change';
 
@@ -45,7 +45,7 @@ const NewsStore = assign({}, EventEmitter.prototype, {
 */
 AppDispatcher.register((payload) => {
   switch (payload.actionType) {
-    case NewsFeedConstants.GET_ARTICLES:
+    case ActionTypes.GET_ARTICLES:
       NewsStore.articles = [...payload.content.articles];
       NewsStore.articlesSource = payload.content.source;
       NewsStore.articlesSortBy = payload.content.sortBy;

@@ -2,8 +2,6 @@ import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 import NewsAction from '../../actions/newsAction';
-// import SourcesStore from '../../stores/SourcesStore';
-// import Loading from '../loader.jsx';
 
 /**
  * Class  displaying the Search Form.
@@ -18,7 +16,6 @@ class ViewSources extends React.Component {
     super(props);
     this.state = {
       currentValue: '',
-      // isLoading: false,
     };
     this.mapStateToOptions = this.mapStateToOptions.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -27,7 +24,8 @@ class ViewSources extends React.Component {
   /**
    * Method to set the currently selected news source,
    * Method to send request to the News Actions.
-   * @param {*} event
+   * @param {*} event - the select-box change event
+   * @return {void} returns nothing
    */
   updateSearch(event) {
     this.props.setIsLoading(true);
@@ -36,6 +34,7 @@ class ViewSources extends React.Component {
       this.setState({
         currentValue: value,
         newsSource: `Viewing news from ${event.label}`,
+        sourceDescription: event.description,
       });
       NewsAction.getArticles(value);
       const sortBy = value.split('?sortBy=')[1].split(',');
@@ -45,14 +44,15 @@ class ViewSources extends React.Component {
 
   /**
    * Method to generate the options for the Search box.
-   * @param {*} sources
+   * @param {*} sources - an array of all the news sources
+   * @return {object} return each news source
    */
   mapStateToOptions(sources) {
     this.sourcesMap = sources;
-    // this.props.setIsLoading();
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
       label: source.name,
+      description: source.description,
     }));
   }
 
@@ -83,7 +83,8 @@ class ViewSources extends React.Component {
                 />
               </div>
             </div>
-            <p className="center">{this.state.newsSource}</p>
+            <h5 className="center">{this.state.newsSource}</h5>
+            <p className="center light"> {this.state.sourceDescription}</p>
           </div>
         </div>
       </div>
@@ -97,7 +98,7 @@ class ViewSources extends React.Component {
 ViewSources.propTypes = {
   sources: PropTypes.array.isRequired,
   setSortBy: PropTypes.func.isRequired,
-  // setIsLoading: PropTypes.string.isRequired,
+  setIsLoading: PropTypes.func,
 };
 
 export default ViewSources;

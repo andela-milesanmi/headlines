@@ -1,6 +1,9 @@
 import React from 'react';
 import { ShareButtons, generateShareIcon } from 'react-share';
 
+/**
+ * Instantiate the share buttons
+*/
 const {
   FacebookShareButton,
   GooglePlusShareButton,
@@ -8,18 +11,25 @@ const {
   TwitterShareButton,
 } = ShareButtons;
 
+/**
+ * Instantiate the share button icons
+*/
 const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
 const GooglePlusIcon = generateShareIcon('google');
 const LinkedinIcon = generateShareIcon('linkedin');
 
+/**
+ * Class to display the share component.
+ * @extends React.Component
+ */
 class Share extends React.Component {
   render() {
     const shareUrl = this.props.share;
     const title = this.props.title;
 
     return (
-      <div className="col s12 m6">
+      <div className="col s12 m9">
         <li className="waves-effect waves-light">
           <FacebookShareButton url={shareUrl} title={title}>
             <FacebookIcon size={32} round />
@@ -45,6 +55,9 @@ class Share extends React.Component {
   }
 }
 
+/**
+ * Set the PropTypes for the Share buttons
+ */
 Share.propTypes = {
   share: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,

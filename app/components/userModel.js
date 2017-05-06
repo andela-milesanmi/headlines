@@ -2,7 +2,8 @@ import Cookies from 'js-cookie';
 
 class User {
   constructor() {
-    this.userDetails = Cookies.get('mai') === undefined ? undefined : JSON.parse(Cookies.get('mai'));
+    this.userDetails = Cookies.get('mai')
+      === undefined ? undefined : JSON.parse(Cookies.get('mai'));
     this.isLogin = this.isLoggedIn();
     this.favorites = '';
     this.name = '';
@@ -48,4 +49,5 @@ class User {
   }
 }
 const user = new User();
+
 export default user;

@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Class to display the share component.
+ * @extends React.Component
+ * @return {*} return the loader.
+ */
 const Loading = () => (
   <div className="row center">
     <div className="col m10 s4 offset-m1">

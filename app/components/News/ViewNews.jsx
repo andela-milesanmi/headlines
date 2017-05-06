@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NewsStore from '../../stores/newsStore';
+import NewsStore from '../../stores/NewsStore';
 import NewsAction from '../../actions/newsAction';
 import NewsList from './NewsList.jsx';
 import Articles from './Articles.jsx';
 import Loading from '../loader.jsx';
+import DefaultPage from '../DefaultPage.jsx';
 
 /**
  * Class to hold the View News component.
@@ -46,7 +47,7 @@ class ViewNews extends React.Component {
   onChange() {
     this.setState(this.getItemsState());
     this.props.setIsLoading(false);
-    console.log('isloading props', this.props.isLoading);
+    this.props.unsetWelcome();
   }
 
   /**
@@ -64,7 +65,7 @@ class ViewNews extends React.Component {
 
   /**
    * Method to set the current Sort value and send request to the News Actions.
-   * @param {*} event
+   * @param {*} event the change event
    * @return {void} returns nothing
    */
   updateSearch(event) {
@@ -72,6 +73,7 @@ class ViewNews extends React.Component {
     this.setState({ currentSortValue: value });
     const urlString = `${this.state.currentSource}&sortBy=${value}`;
     NewsAction.getArticles(urlString, value);
+    this.props.setIsLoading(true);
   }
 
    /**
@@ -84,7 +86,7 @@ class ViewNews extends React.Component {
 
   /**
    * The method that for handling change
-   * @param {array} value - the selected value from select field
+   * @param {array} array - the selected value from select field
    * @return {*} updates the select box options
    */
   getOptions(array) {
@@ -100,12 +102,18 @@ class ViewNews extends React.Component {
    * @return {jsx} The News Content
    */
   render() {
-    const myArticles = this.state.allItems.map(item => <Articles key={item.url} data={item} />);
-    // console.log(myArticles);
+    const myArticles = this.state.allItems.map(item =>
+      <Articles key={item.url} data={item} />
+    );
+
     const sortBarOptions = this.getOptions(this.props.sortBy);
     if (this.props.isLoading) {
       return (
         <Loading />
+      );
+    } else if (this.props.welcome) {
+      return (
+        <DefaultPage sources={this.props.sources} />
       );
     }
     return (
@@ -123,7 +131,12 @@ class ViewNews extends React.Component {
  * Set the PropTypes for News
  */
 ViewNews.propTypes = {
+  sources: PropTypes.array,
   sortBy: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+  welcome: PropTypes.bool,
+  setIsLoading: PropTypes.func.isRequired,
+  unsetWelcome: PropTypes.func.isRequired,
 };
 
 export default ViewNews;

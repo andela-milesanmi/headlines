@@ -22,8 +22,9 @@ class Login extends React.Component {
    * @return {void} returns nothing
    */
   componentWillMount() {
+    this.history = history;
     if (user.isLogin) {
-      history.push('/');
+      this.history.push('/');
     }
   }
 
@@ -33,6 +34,7 @@ class Login extends React.Component {
    */
   render() {
     const clientId = '618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com';
+    this.clientId = clientId;
     const responseGoogle = (response) => {
       user.login(response);
       global.window.location.reload();

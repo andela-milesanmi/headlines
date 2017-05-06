@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * @return {*} return the footer component
+*/
 const Footer = () => (
   <footer className="page-footer teal">
     <div className="footer-copyright">

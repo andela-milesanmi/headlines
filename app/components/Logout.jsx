@@ -16,6 +16,7 @@ class Logout extends React.Component {
      * Log the user out when visited
      * @return {null} redirects user to login page
      */
+    this.history = history;
     if (user.isLogin) {
       user.logOut();
       history.push('/#/login');

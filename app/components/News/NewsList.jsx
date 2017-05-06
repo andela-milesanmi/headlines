@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-// import { Link } from 'react-router';
-import Share from '../share/Share.jsx';
 
+/**
+ * @param {props} props - the parent state properties
+ * @return {*} return the NewsList component
+*/
 const NewsList = props => (
   <div className="section">
     <div className="container">
-      <div className="row center valign-wrapper">
-        <div className="col s12 m6 offset-m3 light">
+      <div className="row">
+        <div className="col s12 m9">
+          {props.articles}
+        </div>
+        <div className="col s12 m3 light">
           <Select
             name="sort-by"
             options={props.sortOptions}
@@ -17,10 +22,8 @@ const NewsList = props => (
             placeholder="Sort News By"
           />
         </div>
+        <div className="divider" />
       </div>
-    </div>
-    <div className="row">
-      {props.articles}
     </div>
   </div>
 );
