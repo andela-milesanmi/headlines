@@ -2,7 +2,9 @@
   "root": true,
   "extends": "airbnb-base",
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y",
+    "import"
   ],
   "env": {
     "node": true,

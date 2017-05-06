@@ -22,8 +22,9 @@ class Login extends React.Component {
    * @return {void} returns nothing
    */
   componentWillMount() {
+    this.history = history;
     if (user.isLogin) {
-      history.push('/');
+      this.history.push('/');
     }
   }
 
@@ -33,6 +34,7 @@ class Login extends React.Component {
    */
   render() {
     const clientId = '618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com';
+    this.clientId = clientId;
     const responseGoogle = (response) => {
       user.login(response);
       global.window.location.reload();
@@ -48,8 +50,12 @@ class Login extends React.Component {
           <div className="section no-pad-bot">
             <div className="container">
               <br />
-              <h1 className="header center teal-text text-lighten-2">Mai Headlines</h1>
-              <h4 className="header center teal-text text-lighten-2">Your home of live news</h4>
+              <h1 className="header center teal-text text-lighten-2">
+                Mai Headlines
+              </h1>
+              <h4 className="header center teal-text text-lighten-2">
+                Your home of live news
+              </h4>
               <div className="row center">
                 <h5 className="header col s12 light">
                   Search through our current set of about 70 sources!!!

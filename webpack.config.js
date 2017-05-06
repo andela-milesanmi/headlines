@@ -1,3 +1,9 @@
+const DotEnvPlugin = require('dotenv-webpack');
+
+const dotEnvPlugin = new DotEnvPlugin({
+  path: './.env',
+});
+
 module.exports = {
   entry: './app/App.jsx',
   output: {
@@ -25,4 +31,10 @@ module.exports = {
     ],
   },
   devtool: 'cheap-module-eval-source-map',
+  plugins: [
+    dotEnvPlugin
+  ],
+  node: {
+    fs: 'empty'
+  }
 };
