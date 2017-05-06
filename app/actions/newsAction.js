@@ -1,12 +1,13 @@
 import axios from 'axios';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants';
+import NewsFeedConstants from '../constants/NewsFeedConstants.jsx';
+
+const baseUrl = 'https://newsapi.org/v1/';
 
 const NewsAction = {
   // Fetch the News Sources
   getSources: () => {
-    const lang = 'en';
-    axios(`https://newsapi.org/v1/sources?${lang}`).then((res) => {
+    axios(`${baseUrl}sources`).then((res) => {
       if (res.data.message) {
         throw new Error(res.data.message);
       } else {
@@ -31,7 +32,8 @@ const NewsAction = {
     }
 
     if (req !== undefined) {
-      const requestUrl = `https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe&source=${query}`;
+      const apiKey = process.env.APIKEY;
+      const requestUrl = `${baseUrl}articles?apiKey=${apiKey}&source=${query}`;
       axios.get(requestUrl).then((res) => {
         if (res.data.message) {
           throw new Error(res.data.message);

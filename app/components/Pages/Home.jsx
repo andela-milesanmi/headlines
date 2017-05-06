@@ -1,9 +1,11 @@
 import React from 'react';
+// import Loader from 'react-loaders';
 import SourcesStore from '../../stores/SourcesStore';
-import ViewSources from '../News/ViewSources';
-import ViewNews from '../News/ViewNews';
+import ViewSources from '../News/ViewSources.jsx';
+import ViewNews from '../News/ViewNews.jsx';
 import NewsAction from '../../actions/newsAction';
 
+// let loader = <Loader type="ball-spin-fade-loader" />;
 /**
  * Class to hold the main component.
  * @extends React.Component
@@ -18,11 +20,17 @@ class Home extends React.Component {
     this.state = {
       sources: [],
       sortBy: [],
+      isLoading: false,
     };
     this.getItemsState = this.getItemsState.bind(this);
     this.onChange = this.onChange.bind(this);
     this.setSortBy = this.setSortBy.bind(this);
+    this.setIsLoading = this.setIsLoading.bind(this);
   }
+
+  // function renderLoader() {
+  //   return <Loader type="line-scale" active />
+  // }
 
   /**
    * Get the initial state from stores
@@ -48,6 +56,15 @@ class Home extends React.Component {
     const itemState = this.getItemsState();
     this.setState({
       sources: itemState.sources || [],
+      isLoading: false,
+    });
+    console.log('unset is loading');
+  }
+
+  setIsLoading(value) {
+    console.log('set is loading');
+    this.setState({
+      isLoading: value,
     });
   }
 
@@ -77,12 +94,32 @@ class Home extends React.Component {
    * @return {jsx} The News Content
    */
   render() {
+    // this.setState({
+    //   isLoading: false,
+    // });
+    // let loading = '';
+    // if (this.state.isLoading) {
+    //   loading = <Loading />;
+    // }
+    console.log('this.setIsLoading', this.state.isLoading);
     return (
       <div className="main-component">
         <div className="row">
-          <ViewSources sources={this.state.sources} setSortBy={this.setSortBy} />
+          <ViewSources
+            sources={this.state.sources}
+            setSortBy={this.setSortBy}
+            loading={this.state.isLoading}
+            setIsLoading={this.setIsLoading}
+          />
         </div>
-        <ViewNews sortBy={this.state.sortBy} />
+        {/*<div className="row">
+          {loading}
+        </div>*/}
+        <ViewNews
+          sortBy={this.state.sortBy}
+          isLoading={this.state.isLoading}
+          setIsLoading={this.setIsLoading}
+        />
       </div>
     );
   }

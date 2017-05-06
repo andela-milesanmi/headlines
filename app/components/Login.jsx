@@ -48,8 +48,12 @@ class Login extends React.Component {
           <div className="section no-pad-bot">
             <div className="container">
               <br />
-              <h1 className="header center teal-text text-lighten-2">Mai Headlines</h1>
-              <h4 className="header center teal-text text-lighten-2">Your home of live news</h4>
+              <h1 className="header center teal-text text-lighten-2">
+                Mai Headlines
+              </h1>
+              <h4 className="header center teal-text text-lighten-2">
+                Your home of live news
+              </h4>
               <div className="row center">
                 <h5 className="header col s12 light">
                   Search through our current set of about 70 sources!!!

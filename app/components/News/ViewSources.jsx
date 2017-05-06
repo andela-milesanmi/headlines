@@ -2,6 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
 import NewsAction from '../../actions/newsAction';
+// import SourcesStore from '../../stores/SourcesStore';
+// import Loading from '../loader.jsx';
 
 /**
  * Class  displaying the Search Form.
@@ -16,6 +18,7 @@ class ViewSources extends React.Component {
     super(props);
     this.state = {
       currentValue: '',
+      // isLoading: false,
     };
     this.mapStateToOptions = this.mapStateToOptions.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -27,6 +30,7 @@ class ViewSources extends React.Component {
    * @param {*} event
    */
   updateSearch(event) {
+    this.props.setIsLoading(true);
     const value = event.value;
     if (value) {
       this.setState({
@@ -41,10 +45,11 @@ class ViewSources extends React.Component {
 
   /**
    * Method to generate the options for the Search box.
-   * @param {object} sources
+   * @param {*} sources
    */
   mapStateToOptions(sources) {
     this.sourcesMap = sources;
+    // this.props.setIsLoading();
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
       label: source.name,
@@ -53,7 +58,7 @@ class ViewSources extends React.Component {
 
   /**
    * Renders the Search Input
-   * @return {string} Search Form
+   * @return {*} Search Form
    */
   render() {
     return (
@@ -92,6 +97,7 @@ class ViewSources extends React.Component {
 ViewSources.propTypes = {
   sources: PropTypes.array.isRequired,
   setSortBy: PropTypes.func.isRequired,
+  // setIsLoading: PropTypes.string.isRequired,
 };
 
 export default ViewSources;

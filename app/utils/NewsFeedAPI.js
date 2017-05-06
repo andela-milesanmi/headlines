@@ -1,9 +1,11 @@
 import axios from 'axios';
 import NewsFeedActions from '../actions/newsAction';
 
+const baseUrl = 'https://newsapi.org/v1/';
+
 module.exports = {
   getSources() {
-    axios('https://newsapi.org/v1/sources?').then((res) => {
+    axios(`${baseUrl}sources`).then((res) => {
       if (res.data.message) {
         throw new Error(res.data.message);
       } else {
@@ -16,7 +18,9 @@ module.exports = {
   },
 
   getArticles(source) {
-    axios(`https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe&source=${source}`).then((res) => {
+    const apiKey = process.env.APIKEY;
+    const requestUrl = `${baseUrl}articles?apiKey=${apiKey}&source=${source}`;
+    axios(requestUrl).then((res) => {
       if (res.data.message) {
         throw new Error(res.data.message);
       } else {

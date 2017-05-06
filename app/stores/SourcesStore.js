@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants';
+import NewsFeedConstants from '../constants/NewsFeedConstants.jsx';
 
 const CHANGE_EVENT = 'change';
 
