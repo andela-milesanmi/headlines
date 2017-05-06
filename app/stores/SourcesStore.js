@@ -1,11 +1,14 @@
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants';
+import ActionTypes from '../constants/ActionTypes.jsx';
 
 const CHANGE_EVENT = 'change';
 
 const SourcesStore = assign({}, EventEmitter.prototype, {
+  /**
+   * Instantiate the needed parameter
+   */
   sources: [],
 
   // Accessor method
@@ -29,10 +32,12 @@ const SourcesStore = assign({}, EventEmitter.prototype, {
   },
 });
 
+/**
+ * Method to register with dispatcher
+*/
 AppDispatcher.register((payloads) => {
-  console.log('payloads', payloads);
   switch (payloads.actionType) {
-    case NewsFeedConstants.GET_SOURCES:
+    case ActionTypes.GET_SOURCES:
       SourcesStore.sources = [...payloads.content];
       SourcesStore.emitChange();
       break;

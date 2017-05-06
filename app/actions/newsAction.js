@@ -1,19 +1,18 @@
 import axios from 'axios';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import NewsFeedConstants from '../constants/NewsFeedConstants';
+import ActionTypes from '../constants/ActionTypes.jsx';
+
+const baseUrl = 'https://newsapi.org/v1/';
 
 const NewsAction = {
   // Fetch the News Sources
   getSources: () => {
-    // const options = [];
-    const lang = 'en';
-    axios(`https://newsapi.org/v1/sources?${lang}`).then((res) => {
+    axios(`${baseUrl}sources`).then((res) => {
       if (res.data.message) {
         throw new Error(res.data.message);
       } else {
-        // console.log('sources response', res.data.sources);
         AppDispatcher.dispatch({
-          actionType: NewsFeedConstants.GET_SOURCES,
+          actionType: ActionTypes.GET_SOURCES,
           content: res.data.sources,
         });
       }
@@ -33,27 +32,22 @@ const NewsAction = {
     }
 
     if (req !== undefined) {
-      const requestUrl = `https://newsapi.org/v1/articles?apiKey=213327409d384371851777e7c7f78dfe&source=${query}`;
+      const apiKey = process.env.APIKEY;
+      const requestUrl = `${baseUrl}articles?apiKey=${apiKey}&source=${query}`;
       axios.get(requestUrl).then((res) => {
-        console.log('sortByReq', requestUrl);
         if (res.data.message) {
           throw new Error(res.data.message);
         } else {
-          console.log('res.data', res);
           AppDispatcher.dispatch({
-            actionType: NewsFeedConstants.GET_ARTICLES,
+            actionType: ActionTypes.GET_ARTICLES,
             content: res.data,
           });
           AppDispatcher.dispatch({
-            actionType: NewsFeedConstants.GET_SORTBYS,
+            actionType: ActionTypes.GET_SORTBYS,
             content: sortByReq,
           });
         }
       });
-      // }).catch((error) => {
-      //   // console.log(error);
-      //   throw new Error(error);
-      // });
     }
   },
 };

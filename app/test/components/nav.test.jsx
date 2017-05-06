@@ -20,8 +20,8 @@ describe('Test Nav component', () => {
       expect(wrapper.node.props.className).toBe('navbar-fixed');
     });
 
-    it('child element with a className property set to black', () => {
-      expect(wrapper.node.props.children.props.className).toBe('black');
+    it('child element with a className property set to teal', () => {
+      expect(wrapper.node.props.children.props.className).toBe('teal');
     });
   });
 });

@@ -1,104 +1,104 @@
 import React from 'react';
 import Select from 'react-select';
-// import SourcesStore from '../../stores/SourcesStore';
-import NewsAction from '../../actions/NewsAction';
+import PropTypes from 'prop-types';
+import NewsAction from '../../actions/newsAction';
 
-
+/**
+ * Class  displaying the Search Form.
+ * @extends React.Component
+ */
 class ViewSources extends React.Component {
+  /**
+   * Returns the value in the Search Field
+   * @param {object} props - The properties of the News Sources Class
+   */
   constructor(props) {
     super(props);
     this.state = {
       currentValue: '',
     };
-    // this.getItemsState = this.getItemsState.bind(this);
-    // this.onChange = this.onChange.bind(this);
     this.mapStateToOptions = this.mapStateToOptions.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    // this.handleQueryValue = this.handleQueryValue.bind(this);
-    // this.saveSortToLocalStorage = this.saveSortToLocalStorage.bind(this);
   }
-  // // Method to retrieve state from Stores
-  // getItemsState() {
-  //   return {
-  //     sources: SourcesStore.getAll(),
-  //   };
-  // }
-  // // Get initial state from stores
-  // getInitialState() {
-  //   return this.getItemsState();
-  // }
-  // onChange() {
-  //   const itemState = this.getItemsState();
-  //   this.setState({
-  //     sources: itemState.sources || [],
-  //   });
-  // }
-  // componentWillMount() {
-  //   // SourcesStore.addChangeListener(this.onChange);
-  //   NewsAction.getSources();
-  // }
-  componentWillUnMount() {
-    // SourcesStore.removeChangeListener(this.onChange);
-  }
+
+  /**
+   * Method to set the currently selected news source,
+   * Method to send request to the News Actions.
+   * @param {*} event - the select-box change event
+   * @return {void} returns nothing
+   */
   updateSearch(event) {
+    this.props.setIsLoading(true);
     const value = event.value;
     if (value) {
-      // console.log('event', event.value);
-      this.setState({ currentValue: value });
+      this.setState({
+        currentValue: value,
+        newsSource: `Viewing news from ${event.label}`,
+        sourceDescription: event.description,
+      });
       NewsAction.getArticles(value);
-      // window.localStorage.setItem();
       const sortBy = value.split('?sortBy=')[1].split(',');
       this.props.setSortBy(sortBy);
-      // window.localStorage.setItem('sort', sourceValue);
-      // console.log(sourceValue, 'my sorts value');
-      // console.log('what i just did', Window.localStorage);
-      // console.log(source.sortBysAvailable);
     }
   }
-  // handleQueryValue() {
-  //   const source = this.state.currentValue.value;
-  //   if (source !== undefined) {
-  //     NewsAction.getArticles({ source, sortby: 'top' });
-  //   } else {
-  //     alert('Please select a news source');
-  //   }
-  // }
 
+  /**
+   * Method to generate the options for the Search box.
+   * @param {*} sources - an array of all the news sources
+   * @return {object} return each news source
+   */
   mapStateToOptions(sources) {
+    this.sourcesMap = sources;
     return sources.map(source => ({
       value: `${source.id}?sortBy=${source.sortBysAvailable.join()}`,
       label: source.name,
-      // desc: source.description,
-      // category: source.category,
-      // sortBy: source.sortBysAvailable,
+      description: source.description,
     }));
   }
 
-  // saveSortToLocalStorage(sortA, sortB) {
-  //   window.localStorage.setItem(sortA, sortB);
-  // }
-
+  /**
+   * Renders the Search Input
+   * @return {*} Search Form
+   */
   render() {
-    // console.log('currently selected item is: ', this.state.currentValue);
     return (
-      <div className="search-box">
-        Select News Source:
-        <Select
-          name="form-field-name"
-          options={this.mapStateToOptions(this.props.sources)}
-          value={this.state.currentValue}
-          class="search-bar"
-          onChange={this.updateSearch}
-          placeholder="Select News Source"
-        />
+      <div className="">
+        <div className="section no-pad-bot">
+          <div className="container">
+            <h4 className="header center teal-text">Your home of live news</h4>
+            <div className="row center">
+              <h5 className="header col s12 light">
+                Search through our current set of about 70 news sources!!!
+              </h5>
+            </div>
+            <div className="row center valign-wrapper">
+              <div className="search-box col s12 m6 offset-m3">
+                <Select
+                  name="form-field-name"
+                  options={this.mapStateToOptions(this.props.sources)}
+                  value={this.state.currentValue}
+                  className="search-bar"
+                  onChange={this.updateSearch}
+                  placeholder="Select News Source"
+                />
+              </div>
+            </div>
+            <h5 className="center">{this.state.newsSource}</h5>
+            <p className="center light"> {this.state.sourceDescription}</p>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
+/**
+ * Set the PropTypes for Search Form
+ */
 ViewSources.propTypes = {
-  sources: React.PropTypes.array.isRequired,
-  setSortBy: React.PropTypes.func.isRequired,
+  sources: PropTypes.array.isRequired,
+  setSortBy: PropTypes.func.isRequired,
+  setIsLoading: PropTypes.func,
 };
 
 export default ViewSources;
