@@ -16,6 +16,7 @@ class ViewSources extends React.Component {
     super(props);
     this.state = {
       currentValue: '',
+      clearable: false,
     };
     this.mapStateToOptions = this.mapStateToOptions.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -28,18 +29,16 @@ class ViewSources extends React.Component {
    * @return {void} returns nothing
    */
   updateSearch(event) {
-    this.props.setIsLoading(true);
     const value = event.value;
-    if (value) {
-      this.setState({
-        currentValue: value,
-        newsSource: `Viewing news from ${event.label}`,
-        sourceDescription: event.description,
-      });
-      NewsAction.getArticles(value);
-      const sortBy = value.split('?sortBy=')[1].split(',');
-      this.props.setSortBy(sortBy);
-    }
+    this.props.setIsLoading(true);
+    this.setState({
+      currentValue: value,
+      newsSource: `Viewing news from ${event.label}`,
+      sourceDescription: event.description,
+    });
+    NewsAction.getArticles(value);
+    const sortBy = value.split('?sortBy=')[1].split(',');
+    this.props.setSortBy(sortBy);
   }
 
   /**
@@ -79,6 +78,8 @@ class ViewSources extends React.Component {
                   value={this.state.currentValue}
                   className="search-bar"
                   onChange={this.updateSearch}
+                  autofocus
+                  clearable={this.state.clearable}
                   placeholder="Select News Source"
                 />
               </div>
