@@ -1,33 +1,35 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
-/**
- * @return {*} return the Nav component
-*/
-const Nav = () => (
-  <div className="navbar-fixed">
-    <nav className="teal" role="navigation">
-      <div className="nav-wrapper container">
-        <IndexLink to="/" classID="logo-container" className="brand-logo">
-          Mai Headlines
-        </IndexLink>
-        <ul className="right hide-on-med-and-down">
-          <li>
-            <Link to="/logout">Logout</Link>
-          </li>
-        </ul>
+class Nav extends React.Component {
+  render() {
+    return (
+      <div className="navbar-fixed">
+        <nav className="black" role="navigation">
+          <div className="nav-wrapper container">
+            {/* <a classID="logo-container" href="/" className="brand-logo">Logo</a>*/}
+            <IndexLink to="/" classID="logo-container" className="brand-logo">
+              Mai Headlines
+            </IndexLink>
+            <ul className="right hide-on-med-and-down">
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </ul>
 
-        <ul classID="nav-mobile" className="side-nav">
-          <li>
-            <Link to="/logout">Logout</Link>
-          </li>
-        </ul>
-        <a href="/#" data-activates="nav-mobile" className="button-collapse">
-          <i className="material-icons">Menu</i>
-        </a>
+            <ul classID="nav-mobile" className="side-nav">
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </ul>
+            <a href="/#" data-activates="nav-mobile" className="button-collapse">
+              <i className="material-icons">Menu</i>
+            </a>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-);
+    );
+  }
+}
 
 export default Nav;

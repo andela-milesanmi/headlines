@@ -1,18 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-/**
- * @return {*} return the footer component
-*/
-const Footer = () => (
-  <footer className="page-footer teal">
-    <div className="footer-copyright">
-      <div className="container">
-        <p className="copyright text-muted">
-          Copyright &copy; Maranatha A. Ilesanmi, 2017 | All rights reserved
-        </p>
-      </div>
-    </div>
-  </footer>
-);
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer className="page-footer black">
+        <div className="footer-copyright">
+          <div className="container">
+            <p className="copyright text-muted small">
+              Copyright &copy; <a className="brown-text text-lighten-3">Maranatha A. Ilesanmi</a>, 2017 | All rights reserved
+            </p>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+}
 
-export default Footer;
+module.exports = Footer;

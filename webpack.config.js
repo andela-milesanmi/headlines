@@ -1,11 +1,5 @@
-const DotEnvPlugin = require('dotenv-webpack');
-
-const dotEnvPlugin = new DotEnvPlugin({
-  path: './.env',
-});
-
 module.exports = {
-  entry: './app/App.jsx',
+  entry: './app/app.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js',
@@ -22,7 +16,7 @@ module.exports = {
           presets: ['react', 'es2015'],
         },
         test: /\.jsx?$/,
-        exclude: /(node_modules)/,
+        exclude: /(node_modules|bower_components)/,
       },
       {
         test: /\.scss$/,
@@ -31,10 +25,4 @@ module.exports = {
     ],
   },
   devtool: 'cheap-module-eval-source-map',
-  plugins: [
-    dotEnvPlugin
-  ],
-  node: {
-    fs: 'empty'
-  }
 };
