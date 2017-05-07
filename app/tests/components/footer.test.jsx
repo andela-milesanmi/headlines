@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import expect from 'expect';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer.jsx';
 
 describe('Test Footer component', () => {
   const wrapper = shallow(<Footer />);
@@ -15,7 +15,8 @@ describe('Test Footer component', () => {
     });
 
     it('div', () => {
-      expect(wrapper.node.props.children.props.className).toBe('footer-copyright');
+      expect(wrapper.node.props.children.props.className)
+        .toBe('footer-copyright');
     });
   });
 });

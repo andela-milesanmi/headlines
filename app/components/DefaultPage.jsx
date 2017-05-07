@@ -12,6 +12,7 @@ const DefaultPage = (props) => {
   const sources = props.sources.map(source =>
     <Sources key={source.id} data={source} />
   );
+
   return (
     <div className="container">
       <div className="row">
@@ -25,7 +26,7 @@ const DefaultPage = (props) => {
  * Set the PropTypes for the Default page
  */
 DefaultPage.propTypes = {
-  sources: PropTypes.array.isRequired,
+  sources: PropTypes.array,
 };
 
 export default DefaultPage;
