@@ -15,31 +15,77 @@ describe('Application Source store', () => {
     { id: 'bbc-sport', name: 'BBC Sport', category: 'sport', sortBysAvailable: ['top'] },
   ];
 
+  console.log(SourcesStore, 'sources store');
+
   it('should exists', () => {
     expect(SourcesStore).toExist();
   });
+  it('should have an emit function', () => {
+    expect(typeof SourcesStore.emit).toBe('function');
+  });
 
   // console.log(ActionTypes.GET_SOURCES, "GET SOURCES ACTION TYPES");
-  // Dispatcher.dispatch({
-  //   actionType: ActionTypes.GET_SOURCES,
-  //   sources,
-  // });
   // Dispatcher.register({
   //   actionType: ActionTypes.GET_SOURCES,
   //   sources,
   // });
+  // actualSources;
 
   it('should receive sources from Dispatcher', () => {
     const actual = SourcesStore.getAll();
     const expected = sources;
     expect(actual).toEqual(expected);
   });
+  it('should be initialized as an empty array', () => {
+    const actual = SourcesStore.sources;
+    expect(actual).toEqual([]);
+  });
+
+  it('should receive some fetched sources from Dispatcher', () => {
+    Dispatcher.dispatch({
+      actionType: ActionTypes.GET_SOURCES,
+      content: fetchedSources,
+    });
+    const actual = SourcesStore.getAll();
+    const expected = fetchedSources;
+    expect(actual).toEqual(expected);
+  });
 
   it('should instantiate correctly', () => {
     expect(typeof SourcesStore).toBe('object');
+  });
+  it('should instantiate correctly', () => {
     expect(typeof SourcesStore.sources).toBe('object');
   });
 
-  it('should ', () => {
+  it('should have an emit change listener method', () => {
+    expect(SourcesStore.emitChange).toExist();
+  });
+  it('should have a change listener that is a function', () => {
+    expect(typeof SourcesStore.emitChange).toBe('function');
+  });
+
+  it('should have a change listener method', () => {
+    expect(SourcesStore.addChangeListener).toExist();
+  });
+  it('should have a change listener that is a function', () => {
+    expect(typeof SourcesStore.addChangeListener).toBe('function');
+  });
+
+  it('should have a remove change listener method', () => {
+    expect(SourcesStore.removeChangeListener).toExist();
+  });
+  it('should have a change listener that is a function', () => {
+    expect(typeof SourcesStore.removeChangeListener).toBe('function');
+  });
+
+  it('should return empty array when an invalid source is searched', () => {
+    Dispatcher.dispatch({
+      actionType: ActionTypes.GET_SOURCES,
+      content: ''
+    });
+    const actual = SourcesStore.getAll();
+    const expected = [];
+    expect(actual).toEqual(expected);
   });
 });
