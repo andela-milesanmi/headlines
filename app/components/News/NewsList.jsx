@@ -20,6 +20,7 @@ const NewsList = props => (
             value={props.currentSortValue}
             onChange={props.updateSearch}
             placeholder="Sort News By"
+            clearable={props.clearable}
           />
         </div>
         <div className="divider" />
@@ -36,6 +37,7 @@ NewsList.propTypes = {
   sortOptions: PropTypes.array.isRequired,
   currentSortValue: PropTypes.string.isRequired,
   updateSearch: PropTypes.func.isRequired,
+  clearable: PropTypes.bool,
 };
 
 export default NewsList;

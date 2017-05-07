@@ -25,6 +25,7 @@ process.env.NODE_ENV = 'test';
 // Register babel so that it will transpile ES6 to ES5
 // before our tests run.
 require('babel-register')();
+// require('jsdom')();
 
 // Disable webpack-specific features for tests since
 // Mocha doesn't know what to do with them.
@@ -39,11 +40,11 @@ const jsdom = require('jsdom').jsdom;
 const exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
-global.window = document.defaultView;
-Object.keys(document.defaultView).forEach((property) => {
+global.window = global.document.defaultView;
+Object.keys(global.document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property);
-    global[property] = document.defaultView[property];
+    global[property] = global.document.defaultView[property];
   }
 });
 

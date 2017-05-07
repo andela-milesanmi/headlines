@@ -23,6 +23,7 @@ class ViewNews extends React.Component {
       orderBy: [],
       currentSource: '',
       currentSortValue: '',
+      clearable: false
     };
     this.getItemsState = this.getItemsState.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -120,6 +121,7 @@ class ViewNews extends React.Component {
       <NewsList
         articles={myArticles}
         sortOptions={sortBarOptions}
+        clearable={this.state.clearable}
         currentSortValue={this.state.currentSortValue}
         updateSearch={this.updateSearch}
       />

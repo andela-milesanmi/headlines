@@ -21,7 +21,7 @@ const Main = props => (
  * Set the PropTypes for Main
  */
 Main.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
 };
 
 export default Main;

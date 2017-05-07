@@ -1,4 +1,5 @@
 const DotEnvPlugin = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const dotEnvPlugin = new DotEnvPlugin({
   path: './.env',
@@ -32,6 +33,10 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     dotEnvPlugin
   ],
   node: {

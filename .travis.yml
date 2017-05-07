@@ -1,12 +1,10 @@
 language: node_js
 node_js:
-  - "6"
+  - "7"
 
 after_success:
+  - npm run test
   - npm run coverage
-  - npm run coveralls
-  - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < lcov.info
 
 addons:
   code_climate:
@@ -14,4 +12,4 @@ addons:
 
 after_failure:
   - npm run coverage
-  - npm run coveralls
+  
