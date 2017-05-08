@@ -1,44 +1,57 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes.jsx';
 
 const CHANGE_EVENT = 'change';
 
-const NewsStore = assign({}, EventEmitter.prototype, {
+/**
+ * @class SourceStore
+ * @extends {EventEmitter}
+ */
+class NewStore extends EventEmitter {
   /**
-   * Instantiate the needed parameters
+   * Creates an instance of SourceStore.
+   * @param {*}
+   * @memberof SourceStore
    */
-  articles: [],
-  articlesSource: '',
-  articlesSortBy: '',
+  constructor() {
+    super();
+    /**
+     * Instantiate the needed parameters
+     */
+    this.articles = [];
+    this.articlesSource = '';
+    this.articlesSortBy = '';
+  }
 
-  // Accessor method
+  /**
+   * @returns {object} returns list of news sources
+   * @memberof SourceStore
+   */
   getAll() {
     return this.articles;
-  },
+  }
   getSourceValue() {
     return this.articlesSource;
-  },
+  }
   getSourceSortBy() {
     return this.articlesSortBy;
-  },
+  }
 
-  // Emit Change event
   emitChange() {
     this.emit(CHANGE_EVENT);
-  },
+  }
 
-  // Add change listener
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
-  },
+  }
 
-  // Remove change listener
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
-  },
-});
+  }
+}
+
+const NewsStore = new NewStore();
 
 /**
  * Method to register with dispatcher

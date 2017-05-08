@@ -1,40 +1,47 @@
 import { EventEmitter } from 'events';
-import assign from 'object-assign';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes.jsx';
 
 const CHANGE_EVENT = 'change';
 
-const SourcesStore = assign({}, EventEmitter.prototype, {
+/**
+ * @class SourceStore
+ * @extends {EventEmitter}
+ */
+class SourceStore extends EventEmitter {
   /**
-   * Instantiate the needed parameter
+   * Creates an instance of SourceStore.
+   * @param {*}
+   * @memberof SourceStore
    */
-  sources: [],
+  constructor() {
+    super();
+    this.sources = [];
+  }
 
-  // Accessor method
+  /**
+   * @returns {object} returns list of news sources
+   * @memberof SourceStore
+   */
   getAll() {
     return this.sources;
-  },
+  }
 
-  // Emit Change event
   emitChange() {
     this.emit(CHANGE_EVENT);
-  },
+  }
 
-  // Add change listener
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
-  },
+  }
 
-  // Remove change listener
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
-  },
-});
+  }
+}
 
-/**
- * Method to register with dispatcher
-*/
+const SourcesStore = new SourceStore();
+
 AppDispatcher.register((payloads) => {
   switch (payloads.actionType) {
     case ActionTypes.GET_SOURCES:
@@ -44,6 +51,7 @@ AppDispatcher.register((payloads) => {
     default:
       break;
   }
+  return true;
 });
 
 export default SourcesStore;
