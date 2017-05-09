@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/andela-milesanmi/headlines.svg?branch=develop)](https://travis-ci.org/andela-milesanmi/headlines)
 [![Coverage Status](https://coveralls.io/repos/github/andela-milesanmi/mai-headlines/badge.svg?branch=develop)](https://coveralls.io/github/andela-milesanmi/mai-headlines?branch=develop)
-[![Code Climate](https://codeclimate.com/github/andela-milesanmi/headlines/badges/gpa.svg)](https://codeclimate.com/github/andela-milesanmi/headlines)
+[![Code Climate](https://codeclimate.com/github/andela-milesanmi/mai-headlines/badges/gpa.svg)](https://codeclimate.com/github/andela-milesanmi/mai-headlines)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 # Headlines
