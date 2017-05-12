@@ -13,7 +13,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    alias: {},
+    alias: {}
   },
   module: {
     loaders: [
