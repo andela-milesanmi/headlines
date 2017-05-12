@@ -11,7 +11,6 @@ const CHANGE_EVENT = 'change';
 class SourceStore extends EventEmitter {
   /**
    * Creates an instance of SourceStore.
-   * @param {*}
    * @memberof SourceStore
    */
   constructor() {
