@@ -5,16 +5,18 @@ import ActionTypes from '../constants/ActionTypes.jsx';
 const CHANGE_EVENT = 'change';
 
 /**
- * @class SourceStore
+ * @class NewStore
  * @extends {EventEmitter}
  */
 class NewStore extends EventEmitter {
   /**
    * Creates an instance of SourceStore.
-   * @param {*}
-   * @memberof SourceStore
+   * @memberof NewStore
    */
   constructor() {
+    /**
+     * 
+     */
     super();
     /**
      * Instantiate the needed parameters
