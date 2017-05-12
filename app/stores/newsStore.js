@@ -14,9 +14,6 @@ class NewStore extends EventEmitter {
    * @memberof NewStore
    */
   constructor() {
-    /**
-     * 
-     */
     super();
     /**
      * Instantiate the needed parameters
