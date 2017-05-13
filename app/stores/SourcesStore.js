@@ -20,20 +20,29 @@ class SourceStore extends EventEmitter {
 
   /**
    * @returns {object} returns list of news sources
-   * @memberof SourceStore
    */
   getAll() {
     return this.sources;
   }
-
+  /**
+   * @returns {*} listens for change and emits the data to the view
+   */
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
-
+  /**
+   * @callback request Callback
+   * @param {callback} callback - the callback that handles event changes
+   * @returns {object} add change listener
+   */
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
-
+  /**
+   * @callback request Callback
+   * @param {callback} callback - the callback that handles event changes
+   * @returns {object} remove change listener
+   */
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
@@ -41,6 +50,9 @@ class SourceStore extends EventEmitter {
 
 const SourcesStore = new SourceStore();
 
+/**
+ * @description Method to register with dispatcher
+*/
 AppDispatcher.register((payloads) => {
   switch (payloads.actionType) {
     case ActionTypes.GET_SOURCES:

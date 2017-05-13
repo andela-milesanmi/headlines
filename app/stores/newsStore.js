@@ -49,13 +49,17 @@ class NewStore extends EventEmitter {
   }
   /**
    * @callback request Callback
-   * @returns {object} returns list of news sources
-   * @memberof SourceStore
+   * @param {callback} callback - the callback that handles event changes
+   * @returns {object} add change listener
    */
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
-
+  /**
+   * @callback request Callback
+   * @param {callback} callback - the callback that handles event changes
+   * @returns {object} remove change listener
+   */
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
@@ -64,7 +68,7 @@ class NewStore extends EventEmitter {
 const NewsStore = new NewStore();
 
 /**
- * Method to register with dispatcher
+ * @description Method to register with dispatcher
 */
 AppDispatcher.register((payload) => {
   switch (payload.actionType) {

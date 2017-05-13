@@ -1,5 +1,8 @@
 import Cookies from 'js-cookie';
 
+/**
+ * @class User
+ */
 class User {
   constructor() {
     this.userDetails = Cookies.get('mai')
@@ -12,6 +15,10 @@ class User {
     this.assignUserValues();
   }
 
+  /**
+   * @param {*} response the user data from
+   * @returns {object} returns cookies storage login data
+   */
   login(response) {
     const user = response.w3;
     Cookies.set('mai', {
@@ -25,11 +32,17 @@ class User {
       imageUrl: user.Paa,
     };
   }
-
+  /**
+   * Method to check login status
+   * @returns {*} the logged in user details
+   */
   isLoggedIn() {
     return !(this.userDetails === undefined);
   }
 
+  /**
+   * @returns {*} returns user details
+   */
   assignUserValues() {
     if (this.isLogin) {
       this.favorites = this.userDetails.favorites;
@@ -39,10 +52,18 @@ class User {
     }
   }
 
+  /**
+   * @param {*} item - the favourite item
+   * @param {*} index - the index of the favoutire item
+   * @returns {object} returns updated list of favourite items
+   */
   removeFavourite(item, index) {
     this.favorites.splice(index, 1);
   }
 
+  /**
+   * @returns {*} returns updated cookie storage
+   */
   logOut() {
     this.isLogin = false;
     Cookies.remove('mai');
