@@ -1,6 +1,8 @@
 import { Dispatcher } from 'flux';
 
-// Create dispatcher instance
+/**
+ * Create instance of the dispatcher
+ */
 const AppDispatcher = new Dispatcher();
 
 export default AppDispatcher;

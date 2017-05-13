@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * @param {props} props - the properties from the parent class
- * @return {*} return the sources component
+ * @return {*} render the sources component
 */
 const Sources = (props) => {
   let key = '';

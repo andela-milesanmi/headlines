@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * @return {*} return the footer component
+ * @return {*} render the footer component
 */
 const Footer = () => (
   <footer className="page-footer teal">

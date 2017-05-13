@@ -6,8 +6,8 @@ import Footer from './Footer/Footer.jsx';
 /**
  * Class to display the share component.
  * @extends React.Component
- * @param {props} props - the parent component state values
- * @return {*} return the main component.
+ * @param {*} props - the parent component state values
+ * @return {jsx} return the main component.
  */
 const Main = props => (
   <div>
@@ -18,7 +18,7 @@ const Main = props => (
 );
 
 /**
- * Set the PropTypes for Main
+ * Set the PropTypes for Main component
  */
 Main.propTypes = {
   children: PropTypes.element,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 /**
- * @return {*} return the Nav component
+ * @return {*} render the Nav component
 */
 const Nav = () => (
   <div className="navbar-fixed">

@@ -5,8 +5,8 @@ import Sources from './News/Sources.jsx';
 /**
  * Class to display the share component.
  * @extends React.Component
- * @param {props} props - the parent component state values
- * @return {*} returns the sources component
+ * @param {*} props - the parent component state values
+ * @return {jsx} returns the sources component
  */
 const DefaultPage = (props) => {
   const sources = props.sources.map(source =>

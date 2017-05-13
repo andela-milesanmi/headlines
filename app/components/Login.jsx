@@ -19,7 +19,7 @@ const history = createHistory({
 class Login extends React.Component {
   /**
    * Invoked immediately after a component is mounted
-   * @return {void} returns nothing
+   * @return {*} returns the logged in url
    */
   componentWillMount() {
     this.history = history;

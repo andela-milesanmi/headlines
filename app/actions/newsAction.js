@@ -5,7 +5,10 @@ import ActionTypes from '../constants/ActionTypes.jsx';
 const baseUrl = 'https://newsapi.org/v1/';
 
 const NewsAction = {
-  // Fetch the News Sources
+  /**
+   * function to fetch news sources from the newsapi.
+   * @returns {*} - object containing the list of news sources via dispatcher
+   */
   getSources: () => {
     axios(`${baseUrl}sources`).then((res) => {
       if (res.data.message) {
@@ -21,17 +24,23 @@ const NewsAction = {
     });
   },
 
-  getArticles: (req = '', sortReq) => {
-    const sourcesReq = req.split('?')[0];
-    const sortByReq = req.split('?')[1];
+  /**
+   * class to fetch news articles an handle sorting.
+   * @param {request} request - the source news sources
+   * @param {sortRequest} sortRequest - the sort bys that are available
+   * @returns {*} - object containing the list of articles via dispatcher
+   */
+  getArticles: (request = '', sortRequest) => {
+    const sourcesRequest = request.split('?')[0];
+    const sortByRequest = request.split('?')[1];
     let query = '';
-    if (sortReq) {
-      query = `${sourcesReq}&sortBy=${sortReq}`;
+    if (sortRequest) {
+      query = `${sourcesRequest}&sortBy=${sortRequest}`;
     } else {
-      query = sourcesReq;
+      query = sourcesRequest;
     }
 
-    if (req !== undefined) {
+    if (request !== undefined) {
       const apiKey = process.env.APIKEY;
       const requestUrl = `${baseUrl}articles?apiKey=${apiKey}&source=${query}`;
       axios.get(requestUrl).then((res) => {
@@ -44,7 +53,7 @@ const NewsAction = {
           });
           AppDispatcher.dispatch({
             actionType: ActionTypes.GET_SORTBYS,
-            content: sortByReq,
+            content: sortByRequest,
           });
         }
       });

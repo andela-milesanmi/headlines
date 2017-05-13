@@ -24,23 +24,34 @@ class NewStore extends EventEmitter {
   }
 
   /**
-   * @returns {object} returns list of news sources
-   * @memberof SourceStore
+   * @returns {object} returns list of news articles
    */
   getAll() {
     return this.articles;
   }
+  /**
+   * @returns {object} returns list of news sources
+   */
   getSourceValue() {
     return this.articlesSource;
   }
+  /**
+   * @returns {object} returns list of articles sortbys
+   */
   getSourceSortBy() {
     return this.articlesSortBy;
   }
-
+  /**
+   * @returns {*} listens for change and emits the data to the view
+   */
   emitChange() {
     this.emit(CHANGE_EVENT);
   }
-
+  /**
+   * @callback request Callback
+   * @returns {object} returns list of news sources
+   * @memberof SourceStore
+   */
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   }
