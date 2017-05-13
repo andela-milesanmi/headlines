@@ -5,7 +5,7 @@ import React from 'react';
  * @extends React.Component
  * @return {*} return the loader.
  */
-const Loading = () => (
+const Loader = () => (
   <div className="row center">
     <div className="col m10 s4 offset-m1">
       <div className="preloader-wrapper big active">
@@ -25,4 +25,4 @@ const Loading = () => (
   </div>
 );
 
-export default Loading;
+export default Loader;

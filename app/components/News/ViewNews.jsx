@@ -4,7 +4,7 @@ import NewsStore from '../../stores/NewsStore';
 import NewsAction from '../../actions/newsAction';
 import NewsList from './NewsList.jsx';
 import Articles from './Articles.jsx';
-import Loading from '../loader.jsx';
+import Loading from '../Loader.jsx';
 import DefaultPage from '../DefaultPage.jsx';
 
 /**

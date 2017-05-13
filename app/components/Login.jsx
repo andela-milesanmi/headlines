@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import createHistory from 'history/createBrowserHistory';
-import user from './userModel';
+import user from '../utils/UserModel';
 
 /**
  * Returns the Success Message.
@@ -33,7 +33,9 @@ class Login extends React.Component {
    * @return {jsx} Show the login component
    */
   render() {
-    const clientId = '618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com';
+    const clientId =
+    '618596594933-bums2pfj1l0ah6aei8me0tj8ksdg09sh.apps.googleusercontent.com';
+
     this.clientId = clientId;
     const responseGoogle = (response) => {
       user.login(response);
