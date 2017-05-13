@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
-import NewsAction from '../../actions/newsAction';
+import NewsAction from '../../actions/NewsAction';
 
 /**
  * Class  displaying the Search Form.

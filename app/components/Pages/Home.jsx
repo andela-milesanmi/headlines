@@ -2,7 +2,7 @@ import React from 'react';
 import SourcesStore from '../../stores/SourcesStore';
 import ViewSources from '../News/ViewSources.jsx';
 import ViewNews from '../News/ViewNews.jsx';
-import NewsAction from '../../actions/newsAction';
+import NewsAction from '../../actions/NewsAction';
 
 /**
  * Class to hold the main component.

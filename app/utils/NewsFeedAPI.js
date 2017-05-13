@@ -1,5 +1,5 @@
 import axios from 'axios';
-import NewsFeedActions from '../actions/newsAction';
+import NewsFeedActions from '../actions/NewsAction';
 
 const baseUrl = 'https://newsapi.org/v1/';
 
