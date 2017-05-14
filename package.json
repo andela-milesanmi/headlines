@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test nyc mocha --compilers js:babel-core/register ./app/tests/**/*.test.jsx",
-    "coverage": "nyc report --reporter=text-lcov | coveralls && npm run test"
+    "coverage": "nyc report --reporter=text-lcov | coveralls && npm run test",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=process.env.CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < lcov.info"
   },
   "repository": {
     "type": "git",
