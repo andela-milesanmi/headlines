@@ -1,5 +1,5 @@
 import expect from 'expect';
-import NewsStore from '../../stores/NewsStore.js';
+import NewsStore from '../../stores/NewsStore';
 import Dispatcher from '../../dispatcher/AppDispatcher';
 import ActionTypes from '../../constants/ActionTypes.jsx';
 import { fetchedArticles } from '../testData';
