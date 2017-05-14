@@ -30,7 +30,7 @@ const NewsList = props => (
 );
 
 /**
- * Set the PropTypes for News
+ * Set the PropTypes for NewsList
  */
 NewsList.propTypes = {
   articles: PropTypes.array.isRequired,

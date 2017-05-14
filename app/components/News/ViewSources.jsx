@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
-import NewsAction from '../../actions/newsAction';
+import NewsAction from '../../actions/NewsAction';
 
 /**
  * Class  displaying the Search Form.
@@ -25,8 +25,8 @@ class ViewSources extends React.Component {
   /**
    * Method to set the currently selected news source,
    * Method to send request to the News Actions.
-   * @param {*} event - the select-box change event
-   * @return {void} returns nothing
+   * @param {event} event - the select-box change event
+   * @return {*} return the new state and props
    */
   updateSearch(event) {
     const value = event.value;
@@ -43,7 +43,7 @@ class ViewSources extends React.Component {
 
   /**
    * Method to generate the options for the Search box.
-   * @param {*} sources - an array of all the news sources
+   * @param {sources} sources - an array of all the news sources
    * @return {object} return each news source
    */
   mapStateToOptions(sources) {
@@ -57,7 +57,7 @@ class ViewSources extends React.Component {
 
   /**
    * Renders the Search Input
-   * @return {*} Search Form
+   * @return {*} render the Search Form
    */
   render() {
     return (
@@ -94,7 +94,7 @@ class ViewSources extends React.Component {
 }
 
 /**
- * Set the PropTypes for Search Form
+ * Set the PropTypes for SOurces View
  */
 ViewSources.propTypes = {
   sources: PropTypes.array.isRequired,

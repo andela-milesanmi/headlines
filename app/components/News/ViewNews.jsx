@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewsStore from '../../stores/NewsStore';
-import NewsAction from '../../actions/newsAction';
+import NewsAction from '../../actions/NewsAction';
 import NewsList from './NewsList.jsx';
 import Articles from './Articles.jsx';
-import Loading from '../loader.jsx';
+import Loading from '../Loader.jsx';
 import DefaultPage from '../DefaultPage.jsx';
 
 /**
@@ -35,7 +35,7 @@ class ViewNews extends React.Component {
 
   /**
    * Invoked immediately after a component is mounted
-   * @return {void} returns nothing
+   * @return {void} returns the new state and props
    */
   componentWillMount() {
     NewsStore.addChangeListener(this.onChange);
@@ -43,7 +43,7 @@ class ViewNews extends React.Component {
 
   /**
    * The method to set the state of the component when there is a change
-   * @return {void} returns nothing
+   * @return {void} set the state and props.
    */
   onChange() {
     this.setState(this.getItemsState());
@@ -66,8 +66,8 @@ class ViewNews extends React.Component {
 
   /**
    * Method to set the current Sort value and send request to the News Actions.
-   * @param {*} event the change event
-   * @return {void} returns nothing
+   * @param {event} event the change event
+   * @returns {*} return the is loading props.
    */
   updateSearch(event) {
     const value = event.value;
@@ -79,7 +79,7 @@ class ViewNews extends React.Component {
 
    /**
    * Invoked immediately when a component is unmounted
-   * @return {void} returns nothing
+   * @returns {*} returns the new state and props.
    */
   componentWillUnMount() {
     NewsStore.removeChangeListener(this.onChange);
@@ -100,7 +100,7 @@ class ViewNews extends React.Component {
 
   /**
    * Display the News Component
-   * @return {jsx} The News Content
+   * @return {jsx} render the ViewNews Content
    */
   render() {
     const myArticles = this.state.allItems.map(item =>
@@ -130,7 +130,7 @@ class ViewNews extends React.Component {
 }
 
 /**
- * Set the PropTypes for News
+ * Set the PropTypes for ViewNews
  */
 ViewNews.propTypes = {
   sources: PropTypes.array,

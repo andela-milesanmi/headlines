@@ -6,7 +6,7 @@ import Home from './components/Pages/Home';
 import ViewNews from './components/News/ViewNews';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import user from './components/userModel';
+import user from './utils/UserModel.js';
 
 /**
  * Check if the user is logged in

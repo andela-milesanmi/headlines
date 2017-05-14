@@ -2,7 +2,7 @@ import React from 'react';
 import SourcesStore from '../../stores/SourcesStore';
 import ViewSources from '../News/ViewSources.jsx';
 import ViewNews from '../News/ViewNews.jsx';
-import NewsAction from '../../actions/newsAction';
+import NewsAction from '../../actions/NewsAction';
 
 /**
  * Class to hold the main component.
@@ -11,7 +11,7 @@ import NewsAction from '../../actions/newsAction';
 class Home extends React.Component {
   /**
    * Set the Initial conditions for Home component
-   * @param {object} props - The properties of the Home Class
+   * @param {*} props - The properties of the Home Class
    */
   constructor(props) {
     super(props);
@@ -38,7 +38,7 @@ class Home extends React.Component {
 
   /**
    * Invoked immediately after a component is mounted
-   * @return {void} returns nothing
+   * @return {*} the new state and props
    */
   componentWillMount() {
     SourcesStore.addChangeListener(this.onChange);
@@ -47,7 +47,7 @@ class Home extends React.Component {
 
   /**
    * The method to set the state of the component when there is a change
-   * @return {void} returns nothing
+   * @return {*} the new state and props
    */
   onChange() {
     const itemState = this.getItemsState();
@@ -74,8 +74,8 @@ class Home extends React.Component {
   }
 
   /**
-   * The method that for handling change
-   * @return {object} sets the state based on value
+   * The method for handling change events
+   * @return {object} the list of sources
    */
   getItemsState() {
     this.getItemsStateNow = '';
@@ -87,7 +87,7 @@ class Home extends React.Component {
   /**
    * Method to set the currently selected SortBy status
    * @param {string} sortBy sets the sortBy
-   * @return {void} returns nothing
+   * @return {void} sets the current sort by state
    */
   setSortBy(sortBy) {
     this.setState({
@@ -97,7 +97,7 @@ class Home extends React.Component {
 
   /**
    * Method to display the main (parent) component.
-   * @return {jsx} The News Content
+   * @return {jsx} render the News Content
    */
   render() {
     return (

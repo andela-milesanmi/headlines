@@ -1,6 +1,6 @@
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import user from './userModel';
+import user from '../utils/UserModel';
 
 const history = createHistory({
   forceRefresh: true,

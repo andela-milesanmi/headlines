@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/andela-milesanmi/mai-headlines/badges/gpa.svg)](https://codeclimate.com/github/andela-milesanmi/mai-headlines)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
-# Headlines
+# Mai Headlines
 
 Mai Headlines is a simple News Feed Application that displays published articles on a range of news sources and blogs. To do this, the app fetches data from the NewsAPI. This project gives you access to high quality, cutting edge news from sources worldwide. It is also designed to be intuitive and easy to use, all with a great, responsive UI. To see a live version of this project, please visit this [link](http://mai-headlines.herokuapp.com/).
 
@@ -11,8 +11,8 @@ Mai Headlines is a simple News Feed Application that displays published articles
 
 1. Technologies
 2. Installation and Setup.
-3. How To Contribute
-4. Limitations
+3. Limitations
+4. How To Contribute
 5. License
 
 ## Technologies
@@ -47,7 +47,11 @@ The current limitations to the NewsFeed App are as follows:
 
 ## How To Contribute
 
-Contributors are welcome to further enhance the features of this Application by contributing to its development. To do so, they can either fork the project to enhance it, or contact the developers [here](maranatha.ilesanmi@gmail.com)
+If you are interested in participating in the development of Mai Headlines, that's really great! Contributors are welcome to further enhance the features of this application by contributing to its development. To do so, you can either fork the project to enhance it, or contact the developers [here](maranatha.ilesanmi@gmail.com) and explore the GitHub issues platform.
+
+If you find something you want to work on, let us know right there in the comments. If you are interested in a specific aspect of the [project](https://github.com/andela-milesanmi/mai-headlines/) but aren’t sure where to begin, feel free to ask. Start small and open up a dialogue with us. This will help to get your contributions accepted easily.
+
+If the contribution you wish to make isn't documented in an existing issue, please [create an issue](https://github.com/andela-milesanmi/mai-headlines/issues/), before you submit a Pull Request. This will allow us and others give additional feedback as well.
 
 ## License
 

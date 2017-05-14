@@ -32,7 +32,7 @@ const Articles = props => (
 );
 
 /**
- * Set the PropTypes for News
+ * Set the PropTypes for Articles
  */
 Articles.propTypes = {
   data: PropTypes.object.isRequired,

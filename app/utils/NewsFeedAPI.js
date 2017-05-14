@@ -1,9 +1,13 @@
 import axios from 'axios';
-import NewsFeedActions from '../actions/newsAction';
+import NewsFeedActions from '../actions/NewsAction';
 
 const baseUrl = 'https://newsapi.org/v1/';
 
-module.exports = {
+const NewsFeedAPI = {
+  /**
+   * function to fetch news sources from the newsapi.
+   * @returns {*} - object containing the list of news sources
+   */
   getSources() {
     axios(`${baseUrl}sources`).then((res) => {
       if (res.data.message) {
@@ -17,6 +21,11 @@ module.exports = {
     });
   },
 
+  /**
+   * class to fetch news articles an handle sorting.
+   * @param {*} source - the source news sources
+   * @returns {*} - object containing the list of articles based on sources
+   */
   getArticles(source) {
     const apiKey = process.env.APIKEY;
     const requestUrl = `${baseUrl}articles?apiKey=${apiKey}&source=${source}`;
@@ -32,3 +41,5 @@ module.exports = {
     });
   },
 };
+
+export default NewsFeedAPI;
