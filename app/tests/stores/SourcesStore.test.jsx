@@ -1,5 +1,5 @@
 import expect from 'expect';
-import SourcesStore from '../../stores/SourcesStore';
+import SourcesStore from '../../stores/SourcesStore.jsx';
 import Dispatcher from '../../dispatcher/AppDispatcher';
 import ActionTypes from '../../constants/ActionTypes.jsx';
 import { fetchedSources } from '../testData';
