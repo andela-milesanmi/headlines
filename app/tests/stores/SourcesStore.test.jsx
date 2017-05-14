@@ -2,7 +2,7 @@ import expect from 'expect';
 import SourcesStore from '../../stores/SourcesStore';
 import Dispatcher from '../../dispatcher/AppDispatcher';
 import ActionTypes from '../../constants/ActionTypes.jsx';
-import { fetchedSources } from '../testData';
+import { fetchedSources } from '../testData.test';
 
 describe('Application Source store', () => {
   const sources = [];
