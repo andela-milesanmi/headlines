@@ -1,6 +1,6 @@
 import expect from 'expect';
 import User from '../../utils/UserModel';
-import { Response } from '../testData';
+import { Response } from '../testData.test';
 
 describe('test for user model', () => {
   it('should exist', () => {
