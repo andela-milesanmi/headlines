@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/andela-ojoloko/CP1-News-feed-application.svg?branch=develop)](https://travis-ci.org/andela-milesanmi/mai-headlines)
 [![Coverage Status](https://coveralls.io/repos/github/andela-milesanmi/mai-headlines/badge.svg?branch=develop)](https://coveralls.io/github/andela-milesanmi/mai-headlines?branch=develop)
-[![Test Coverage](https://codeclimate.com/github/andela-milesanmi/mai-headlines/coverage.svg)](https://codeclimate.com/github/andela-milesanmi/mai-headlines/coverage)
 [![Code Climate](https://codeclimate.com/github/andela-milesanmi/mai-headlines/badges/gpa.svg)](https://codeclimate.com/github/andela-milesanmi/mai-headlines/)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
